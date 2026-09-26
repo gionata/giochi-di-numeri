@@ -33,8 +33,8 @@
 \title{Giochi di Numeri\\Dall'aritmetica al pensiero ricorsivo}
 % Definire ricorsivamente l'aritmetica
 % Dall'aritmetica al pensare ricorsivamente
-% Dall'aritmetica alla ricorsione strutturata
-% Numeri naturali e ricorsione strutturata
+% Dall'aritmetica alla ricorsione strutturale
+% Numeri naturali e ricorsione strutturale
 % Dall'aritmetica alle procedure ricorsive 
 % Procedure ricorsive a partire dai numeri naturali
 \author{
@@ -49,7 +49,7 @@ Pamela Sanchini\inst{2}
    \email{gionata.massi@savoiabenincasa.it} \and
    Liceo Scientifico e Musicale ``Einstein'' di Rimini\\
   \email{\{alberto.cesaretti,pamela.sanchini\}@liceoeinstein.it}
-}
+''}
 
 \authorrunning{Massi, Cesaretti e Sanchini}
 
@@ -104,34 +104,28 @@ Pamela Sanchini\inst{2}
 \selectlanguage{italian}
 
 \begin{abstract}
-Questo resoconto descrive un percorso di 10 ore, svolto con 15 studenti del primo biennio del Liceo Matematico, per introdurre il pensiero ricorsivo usando il contesto dell'aritmetica e il linguaggio \emph{Scheme}. Il lavoro parte da tre primitive, \texttt{zero?}, \texttt{s} (successore) e \texttt{p} (predecessore), e guida gli studenti alla definizione ricorsiva di procedure.
-%, dopo un'introduzione ad atomi, liste e valutazione per sostituzione.
-L'obiettivo non è insegnare un linguaggio in quanto tale né trattare l'aritmetica come fine, ma condurre gli studenti a descrivere formalmente processi di calcolo per dare significato ai concetti informatici di algoritmo, esecutore automatico, correttezza locale, rappresentazione simbolica dei dati e scomposizione ricorsiva. Il percorso è coerente con i traguardi e gli obiettivi CINI per il primo biennio della scuola secondaria di secondo grado relativi alla generalità degli algoritmi, alla correttezza, alla previsione del comportamento dei programmi e all'uso di un linguaggio testuale~\cite{cini2017indicazioni}. L'approccio ha favorito discussioni informatiche e attenzione alla previsione dei programmi, ma ha richiesto tempi distesi.
-%; i risultati riportati hanno carattere osservativo per l'assenza di una verifica ex post strutturata.
-
+Questo resoconto descrive un corso extracurricolare di 10 ore, svolto con 15 studenti del primo biennio del Liceo Matematico, per introdurre il pensiero ricorsivo usando l'aritmetica come contesto e \emph{Scheme} come linguaggio. A partire da tre primitive sui naturali, \texttt{zero?}, \texttt{s} (successore) e \texttt{p} (predecessore), e da regole di manipolazione simbolica, gli studenti sono guidati alla definizione ricorsiva di procedure computazionali.
+Il percorso è coerente con i traguardi e gli obiettivi della proposta CINI per il primo biennio della scuola secondaria di secondo grado.
+L'approccio ha inizialmente richiesto tempi distesi per la notazione prefissa e la formalizzazione; nelle ultime lezioni ha favorito la capacità di prevedere l'esito dei programmi e di riconoscere la struttura ricorsiva delle soluzioni.
 \end{abstract}
 
 \section{Contesto e obiettivi}\label{introduzione}
 
-Il percorso è stato svolto nell'ambito del progetto scolastico dell'IIS ``Savoia Benincasa'', ``Citizen scientists of the future'', finanziato dal Piano Nazionale di Ripresa e Resilienza (PNRR), Missione 4 -- Istruzione e Ricerca, Investimento 3.1 ``Nuove competenze e nuovi linguaggi''. Il gruppo destinatario era costituito da 15 studenti del primo biennio del Liceo Matematico; non erano richieste competenze pregresse di programmazione, ma soltanto familiarità con i numeri naturali, il significato delle quattro operazioni, l'ordine di precedenza e la valutazione delle espressioni con parentesi.
+Il percorso è stato realizzato nell'ambito del progetto dell'IIS ``Savoia Benincasa'' ``Citizen scientists of the future'', finanziato dal Piano Nazionale di Ripresa e Resilienza (PNRR), Missione~4 -- Istruzione e Ricerca, Investimento~3.1 ``Nuove competenze e nuovi linguaggi''. Il gruppo destinatario era costituito da 15 studenti del primo biennio del Liceo Matematico; non erano richieste competenze pregresse di programmazione, ma soltanto familiarità con i numeri naturali, il significato delle quattro operazioni, l'ordine di precedenza e la valutazione delle espressioni con parentesi.
 
-La scelta del tema nasce da due difficoltà che gli autori riscontrano frequentemente nella propria pratica: molti studenti sanno usare procedure aritmetiche, ma non riescono a descriverle come processi eseguibili da una macchina; quasi nessuno ricorda la divisione con resto. L'aritmetica ha quindi funzionato come \emph{contesto}, non come fine del percorso, il cui obiettivo centrale era la transizione dal ``saper fare'' al ``saper descrivere formalmente''. I nuclei disciplinari informatici trattati sono stati: descrizione algoritmica, linguaggio formale, strutture dati elementari (atomi, liste), ricorsione, valutazione di espressioni e correttezza locale delle procedure.
+La scelta del tema è stata concordata tra gli insegnanti di matematica e di informatica e prende ad oggetto di studio un contesto che dovrebbe essere ben chiaro agli studenti, anche se gli autori riscontrano frequentemente nella propria pratica delle difficoltà: molti studenti sanno usare procedure aritmetiche, ma non riescono a descriverle come processi eseguibili da una macchina, e quasi nessuno ricorda la divisione euclidea. L'aritmetica ha quindi funzionato come \emph{contesto} già familiare allo studente, non come fine del percorso, e l'obiettivo centrale era la transizione dal ``saper fare'' al ``saper far fare'' aritmetica. I nuclei disciplinari informatici trattati sono stati: descrizione algoritmica, linguaggio formale, strutture dati elementari (atomi, liste), ricorsione, valutazione di espressioni e correttezza delle procedure.
 
-Il percorso è stato progettato per perseguire i seguenti traguardi e obiettivi delle Indicazioni CINI per il primo biennio della scuola secondaria di secondo grado~\cite{cini2017indicazioni}: comprensione della necessità di un esecutore automatico per esprimere algoritmi in modo non ambiguo \mbox{(T-S-1)}; riconoscimento della generalità dell'algoritmo rispetto al singolo input \mbox{(T-S-2)}; giustificazione della correttezza di un algoritmo \mbox{(T-S-3)}; previsione del risultato di un programma senza eseguirlo \mbox{(O-S-P-2)}; progettazione di programmi modulari con procedure e funzioni \mbox{(O-S-P-6)}; scrittura di semplici programmi in un linguaggio testuale \mbox{(O-S-P-7)}.
+Il percorso è stato progettato per perseguire i seguenti traguardi e obiettivi della Proposta di Indicazioni Nazionali per l'insegnamento dell'Informatica nella Scuola~\cite{cini2017indicazioni}: comprensione della necessità di un esecutore automatico per esprimere algoritmi in modo non ambiguo~(T-S-1); riconoscimento della generalità dell'algoritmo rispetto al singolo input~(T-S-2); giustificazione della correttezza di un algoritmo~(T-S-3); previsione del risultato di un programma senza eseguirlo~(O-S-P-2); progettazione di programmi modulari con procedure e funzioni~(O-S-P-6); scrittura di semplici programmi in un linguaggio testuale~(O-S-P-7).
 
 \section{Scelte metodologiche e strumenti}\label{metodologia-e-strumenti}
 
-L'ambiente scelto è \emph{WeScheme}\footnote{L'ambiente Scheme è disponibile all'indirizzo: \url{https://www.wescheme.org/}. Dopo il corso è stato costruito un ambiente didattico online per descrivere i programmmi secondo il modello illustrato in questo articolo: \url{https://gionatamassibenincasa.github.io/process-visualizer/}} perché permette di valutare espressioni in linguaggio \emph{Scheme} direttamente nel browser. Il linguaggio si presta allo scopo di costruire una \emph{forma mentis} ricorsiva, capace di definire procedure e strutture che si riferiscono a sé stesse, senza richiedere una sintassi complessa. Tre forme sintattiche, \texttt{define}, \texttt{lambda} e \texttt{cond}, sono sufficienti per costruire tutte le procedure proposte nel percorso. Altri linguaggi avrebbero comportato la necessità di introdurre concetti aggiuntivi.
-% \emph{Python}, ad esempio, avrebbe richiesto di introdurre valore di ritorno ed effetti collaterali, potenzialmente spostando l'attenzione sulla meccanica della pila delle chiamate. \emph{Prolog} avrebbe richiesto di introdurre l'unificazione e la ricerca nello spazio delle soluzioni, un modello computazionale altro rispetto alla ricorsione strutturata.
-\emph{Scheme}, inoltre, è il linguaggio scelto nei testi da cui l'autore ha tratto ispirazione~\cite{Abelson1996,Felleisen2018,Friedman1995}.
-% per gli argomenti, le rappresentazioni e le metodologie didattiche impiegate nel corso.
-Come in~\cite{Friedman1995}, lo schema ricorsivo non è stato introdotto come regola astratta, ma fatto emergere per imitazione e ripetizione: gli studenti hanno osservato numerose procedure già scritte, ne hanno discusso la struttura comune e l'hanno poi riprodotta su problemi nuovi. A livello di progettazione si è applicato il principio della \emph{ricorsione strutturata}~\cite{Felleisen2018}: la struttura della procedura ricalca la struttura induttiva del dato in ingresso. Nel caso dei numeri naturali, % definiti secondo il sistema di Peano come zero oppure successore di un numero naturale,
-ciò significa scomporre ogni numero $n$ diverso da zero nel suo predecessore $(p\ n)$, riconducendo il problema a un'istanza via via più vicina al caso base \emph{zero}.
+L'ambiente scelto è \emph{WeScheme}\footnote{Disponibile all'indirizzo: \url{https://www.wescheme.org/}. Dopo il termine del corso, per semplificare la scrittura dei programmi e visualizzare il processo di calcolo, è stato costruito un ambiente didattico online: \mbox{\url{https://gionatamassibenincasa.github.io/process-visualizer/}}} perché permette di valutare espressioni in linguaggio \emph{Scheme} direttamente nel browser. Il linguaggio si presta a costruire una \emph{forma mentis} ricorsiva, capace di definire procedure e strutture che si riferiscono a sé stesse, senza richiedere una sintassi complessa. Tre forme sintattiche, \texttt{define}, \texttt{lambda} e \texttt{cond}, sono sufficienti per costruire tutte le procedure proposte. Altri linguaggi avrebbero comportato l'introduzione di concetti aggiuntivi.
 
-%Tenendo conto dell'età degli studenti, 
-Espressioni simboliche e processo di valutazione sono stati affiancati da mediatori attivi e iconici. Questi ultimi, tratti da~\cite{Abelson1996,bootstrap}, sono illustrati nella fig.~\ref{fig:mediatori-iconici}.
-% alcuni ripresi e adattati dal progetto \emph{Bootstrap: Algebra}~\cite{bootstrap}, in particolare dalla lezione \emph{Order of Operations}, in cui vengono introdotti i \emph{Circles of Evaluation}, altri da SICP.
-Nel caso dei numeri naturali e delle operazioni su di essi, sono stati usati i regoli Cuisenaire. % e regole ricorsive sulla loro manipolazione per illustrare le operazioni aritmetiche come processi di manipolazione espressi ricorsivamente.
+\emph{Scheme}, inoltre, è il linguaggio scelto nei testi da cui gli autori hanno tratto ispirazione~\cite{Abelson1996,Felleisen2018,Friedman1995}. Come in~\cite{Friedman1995}, lo schema ricorsivo non è stato introdotto come regola astratta, ma fatto emergere per imitazione e ripetizione: gli studenti hanno osservato numerose procedure già scritte, ne hanno discusso la struttura comune e l'hanno poi riprodotta su problemi nuovi. A livello di progettazione degli algoritmi si è applicato il principio della \emph{ricorsione strutturale}~\cite{Felleisen2018}: la struttura della procedura ricalca la struttura induttiva del dato in ingresso. Nel caso dei numeri naturali ciò significa scomporre ogni numero $n$ diverso da zero nel suo predecessore $(p\ n)$, riconducendo il problema a un'istanza via via più vicina al caso base \emph{zero}.
+
+Per sostenere la distinzione tra espressione e sua valutazione abbiamo usato sistematicamente quattro mediatori iconici per la stessa espressione \texttt{(+ 1 2)}: la scrittura prefissa (Fig.~\ref{fig:s-exp}), la struttura a lista (Fig.~\ref{fig:lista}), l'albero sintattico (Fig.~\ref{fig:albero}) e il cerchio di valutazione di Bootstrap (Fig.~\ref{fig:cerchio}). Il passaggio tra le rappresentazioni (Fig.~\ref{fig:mediatori-iconici}) è stato usato per esplicitare la struttura ricorsiva dell'espressione e l'ordine di valutazione.
+
+Nel caso dei numeri naturali e delle operazioni su di essi sono stati usati i regoli Cuisenaire.
 
 \begin{figure}[!htb]
     \centering
@@ -156,7 +150,7 @@ Nel caso dei numeri naturali e delle operazioni su di essi, sono stati usati i r
     \end{subfigure}\hfill
 
     \vspace{0.8em}
-    
+
     \begin{subfigure}[t]{0.4\textwidth}
       \centering
       \begin{minipage}[c][0.13\textheight][c]{\linewidth}
@@ -175,11 +169,11 @@ Nel caso dei numeri naturali e delle operazioni su di essi, sono stati usati i r
       \caption{Cerchio di valutazione\label{fig:cerchio}}
     \end{subfigure}\hfill
 
-  \caption{Quattro rappresentazioni dell'espressione \texttt{(+ 1 2)}, il cui valore è $3$}
+  \caption{Quattro rappresentazioni dell'espressione \texttt{(+ 1 2)} usate come mediatori}
   \label{fig:mediatori-iconici}
 \end{figure}
 
-Per ragionare sulle espressioni, rappresentate come liste (fig.~\ref{fig:lista}), agli studenti sono state fornite le definizioni in Scheme delle costanti, dei predicati e delle funzioni per la manipolazione di liste usate nelle prime tre lezioni\footnote{Per comodità d'uso in classe sono stati adottati nomi italiani al posto dei corrispondenti predefiniti in Scheme: \texttt{lista-vuota} per \texttt{'()}, \texttt{atomo?} (non primitiva, definita in termini di \texttt{pair?}), \texttt{lista?} per \texttt{list?}, \texttt{lista-vuota?} per \texttt{null?}, \texttt{uguale?} per \texttt{eq?}, \texttt{primo} per \texttt{car}, \texttt{resto} per \texttt{cdr}, \texttt{anteponi} per \texttt{cons}, \texttt{lista} per \texttt{list}.}: la costante \texttt{lista-vuota}, i predicati \texttt{atomo?}, \texttt{lista?}, \texttt{lista-vuota?} e \texttt{uguale?}, le procedure \texttt{primo}, \texttt{resto}, \texttt{anteponi} e \texttt{lista}. Le primitive aritmetiche \texttt{s}, \texttt{p} e \texttt{zero?} sono state introdotte separatamente e restano in uso per l'intero percorso.
+Per ragionare sulle espressioni, rappresentate come liste (Fig.~\ref{fig:lista}), agli studenti sono state fornite le definizioni in Scheme delle costanti, dei predicati e delle funzioni per la manipolazione di liste usate nelle prime tre lezioni\footnote{Per comodità d'uso in classe sono stati adottati nomi italiani al posto dei corrispondenti predefiniti in Scheme: \texttt{lista-vuota} per \texttt{'()}, \texttt{atomo?} (non primitiva, definita in termini di \texttt{pair?}), \texttt{lista?} per \texttt{list?}, \texttt{lista-vuota?} per \texttt{null?}, \texttt{uguale?} per \texttt{eq?}, \texttt{primo} per \texttt{car}, \texttt{resto} per \texttt{cdr}, \texttt{anteponi} per \texttt{cons}, \texttt{lista} per \texttt{list}.}: la costante \texttt{lista-vuota}, i predicati \texttt{atomo?}, \texttt{lista?}, \texttt{lista-vuota?} e \texttt{uguale?}, le procedure \texttt{primo}, \texttt{resto}, \texttt{anteponi} e \texttt{lista}. Le primitive aritmetiche \texttt{s}, \texttt{p} e \texttt{zero?} sono state introdotte separatamente e restano in uso per l'intero percorso.
 
 \section{Articolazione del percorso}\label{il-percorso-didattico}
 
@@ -191,11 +185,9 @@ Nel secondo incontro si è introdotta la forma condizionale e gli studenti hanno
 
 Nel terzo incontro sono state costruite procedure ricorsive su liste: riconoscimento di liste di atomi, semplici algoritmi di ricerca e di sostituzione di valori.
 
-Il quarto e il quinto incontro sono stati dedicati esclusivamente alle operazioni sui numeri naturali: alcune procedure sono state sviluppate dall'insegnante, altre costruite dagli studenti a partire dallo schema già noto; altre ancora sono state presentate con nomi non significativi e fatte riconoscere agli studenti tramite simulazione.
+Il quarto e il quinto incontro sono stati dedicati esclusivamente alle operazioni sui numeri naturali: alcune procedure sono state sviluppate dall'insegnante, altre costruite dagli studenti a partire dallo schema già noto; altre ancora sono state presentate con nomi non significativi e fatte riconoscere tramite simulazione.
 
-Addizione, sottrazione e predicati di confronto sono stati descritti senza ricorrere alle tabelline e alle rappresentazioni in colonna, ma usando solo primitive minime e una definizione ricorsiva, applicando in ciascun caso la scomposizione strutturale del numero naturale. La fig.~\ref{fig:addizione} mostra questo passaggio nel caso dell'addizione: il secondo argomento viene progressivamente ridotto fino al caso base, mentre i successori da applicare al primo argomento restano ``in attesa''\footnote{Le procedure costruite generano quasi tutte \emph{processi ricorsivi lineari}, tranne \texttt{minore?} e \texttt{sottrazione}: la valutazione si espande costruendo una catena di operazioni differite (un successore), che resta sospesa fino al raggiungimento del caso base, per poi contrarsi eseguendo via via le operazioni accumulate~\cite[par.~1.2.1, \textit{Linear Recursion and Iteration}]{Abelson1996}. La struttura della chiamata dell'\texttt{addizione} è costruita in analogia con quella di costruzione delle liste. Il processo generato non è efficiente, ma tra gli scopi del corso non vi era lo studio della complessità degli algoritmi.}.
-
-L'uso dei mediatori è stato costante: ad esempio, la valutazione dell'espressione \texttt{(addizione 3 2)} è stata illustrata accompagnando la manipolazione dei regoli, come in fig.~\ref{fig:addizione-regoli}, alla riscrittura in parallelo delle espressioni intermedie alla lavagna.
+Addizione, sottrazione e predicati di confronto sono stati definiti senza ricorrere a tabelline o alla notazione in colonna, ma a partire dalle sole primitive \texttt{s}, \texttt{p}, \texttt{zero?} e da uno schema ricorsivo comune: la scomposizione strutturale del numero naturale. La Fig.~\ref{fig:addizione} illustra il caso dell'addizione: il secondo argomento è ridotto ricorsivamente fino al caso base, mentre i successori da applicare al primo restano sospesi. Per ogni valutazione abbiamo affiancato tre piani: la manipolazione dei regoli Cuisenaire, la riscrittura delle espressioni intermedie alla lavagna e la relativa rappresentazione grafica (Fig.~\ref{fig:addizione-regoli} per \texttt{(addizione 3 2)})\footnote{Con l'eccezione di \texttt{minore?} e \texttt{sottrazione}, che generano un processo iterativo, le procedure presentate generano processi ricorsivi lineari: la valutazione si espande accumulando operazioni differite (\texttt{s}) fino al caso base, per poi contrarsi~\cite[par.~1.2.1]{Abelson1996}. L'inefficienza del processo non è stata oggetto di discussione, non rientrando tra gli obiettivi del corso.}.
 
 \begin{figure}[!htb]
   \centering
@@ -211,8 +203,7 @@ L'uso dei mediatori è stato costante: ad esempio, la valutazione dell'espressio
 \end{figure}
 
 La divisione intera è stata introdotta presentando il listato con il nome non significativo \texttt{operazione-misteriosa}: gli studenti, osservando la valutazione di \texttt{(operazione-misteriosa~12~4)}, dovevano stabilire se l'operazione fosse loro nota e, in caso affermativo, attribuirle il nome corretto.
-% La fig.~\ref{fig:appendix-quoziente-scheme} mostra la definizione ricorsiva della procedura \texttt{quoziente}, mentre la fig.~\ref{fig:quoziente-regoli} illustra lo stesso processo con i regoli Cuisenaire: la riduzione del primo argomento fino a un valore inferiore al secondo corrisponde al calcolo del quoziente.
-La definizione ricorsiva della procedura \texttt{quoziente} (fig.~\ref{fig:appendix-quoziente-scheme}) esprime il quoziente tramite sottrazioni successive: il primo argomento viene progressivamente ridotto fino a un valore minore del secondo, raggiungendo così il caso base, mentre i successori da applicare restano sospesi e vengono effettivamente sommati durante la fase di contrazione del processo, esattamente come nel caso dell'addizione. Come illustrato nella fig.~\ref{fig:quoziente-regoli} con i regoli Cuisenaire, questo meccanismo rende visibile agli studenti, passo dopo passo, la costruzione del quoziente.
+La definizione ricorsiva della procedura \texttt{quoziente} (Fig.~\ref{fig:appendix-quoziente-scheme}) esprime il quoziente tramite sottrazioni successive: il primo argomento viene progressivamente ridotto fino a un valore minore del secondo, raggiungendo così il caso base, mentre i successori restano sospesi e vengono sommati durante la fase di contrazione, esattamente come nel caso dell'addizione. Come illustrato in Fig.~\ref{fig:quoziente-regoli} con i regoli Cuisenaire, questo meccanismo rende visibile, passo dopo passo, la costruzione del quoziente.
 
 \begin{figure}[!htb]
     \centering
@@ -225,7 +216,7 @@ Si è infine accennato a come la moltiplicazione possa essere definita come addi
 \section{Risultati e limiti}\label{conclusioni}
 
 Le considerazioni che seguono derivano dalle attività e dalle discussioni in classe; non è stato possibile raccogliere ex post dati strutturati o prove comparabili.
-% Il percorso ha fatto emergere tre elementi rilevanti.
+
 Diversi studenti hanno iniziato a leggere i programmi come oggetti da interpretare e discutere, non solo da eseguire: era frequente chiedere di prevedere l'esito di una chiamata prima di lanciarla e di riscriverla passo dopo passo, con un miglioramento percepibile rispetto alle prime lezioni.
 Gli studenti hanno appreso gradualmente il lessico disciplinare: \emph{espressione}, \emph{procedura}, \emph{caso base}, \emph{espressione intermedia}, \emph{argomento}, \emph{parametro}\footnote{La distinzione tra \emph{argomento} (il valore passato nella chiamata) e \emph{parametro} (l'identificatore nella definizione della procedura) segue l'uso adottato in~\cite{Abelson1996,Felleisen2018}.}. La ricorsione, inizialmente percepita come artificio, è stata riconosciuta da una parte della classe come tecnica generale di scomposizione dei problemi.
 
@@ -233,14 +224,13 @@ Il percorso ha anche mostrato limiti chiari. La sintassi prefissa di \emph{Schem
 
 Per una futura edizione sarebbe utile introdurre verifiche iniziali e finali per misurare l'evoluzione nella capacità di predire il comportamento dei programmi e di progettare definizioni ricorsive semplici. Sarebbe inoltre opportuno affiancare a \emph{Scheme} una fase conclusiva di trasferimento in un linguaggio testuale più diffuso, per mostrare la trasferibilità delle competenze acquisite.
 
-Nel complesso l'esperienza suggerisce che, anche nel primo biennio, è possibile lavorare su contenuti fortemente disciplinari senza ridurre l'Informatica all'uso di applicazioni. La costruzione ricorsiva dell'aritmetica ha offerto un contesto motivante proprio perché ha reso esplicito che dietro operazioni note esistono rappresentazioni formali e algoritmi. La scelta degli esempi è coerente con il profilo del Liceo Matematico e potrebbe richiedere adattamenti in altri indirizzi.
+Nel complesso l'esperienza suggerisce che, anche nel primo biennio, è possibile lavorare su contenuti fortemente disciplinari senza ridurre l'Informatica all'uso di applicazioni. La costruzione ricorsiva dell'aritmetica ha offerto un contesto motivante proprio perché ha reso esplicito che dietro operazioni note esistono rappresentazioni formali e algoritmi. La scelta degli esempi è coerente con il profilo del Liceo Matematico e richiede adattamenti in altri indirizzi.
 
 \appendix
 
 \section{Esempi di codice usati nel percorso didattico}\label{appendice-codice}
 
-Le definizioni delle procedure primitive per l'aritmetica\footnote{\texttt{s} e \texttt{p} sono definite tramite \texttt{+} e \texttt{-} di Scheme per comodità pratica; concettualmente svolgono il ruolo di primitive. % nel sistema di Peano.
-La procedura \texttt{zero?} è già fornita dal linguaggio.} sono in fig.~\ref{fig:primitive-aritmetica}.
+Le definizioni delle procedure primitive per l'aritmetica\footnote{\texttt{s} e \texttt{p} sono definite tramite \texttt{+} e \texttt{-} di Scheme per comodità pratica; concettualmente svolgono il ruolo di primitive. La procedura \texttt{zero?} è già fornita dal linguaggio.} sono in Fig.~\ref{fig:primitive-aritmetica}.
 
 \begin{figure}[!htb]
   \centering
@@ -248,7 +238,7 @@ La procedura \texttt{zero?} è già fornita dal linguaggio.} sono in fig.~\ref{f
   \caption{Primitive aritmetiche usate per costruire ricorsivamente le altre operazioni}\label{fig:primitive-aritmetica}
 \end{figure}
 
-Le procedure ricorsive per esprimere formalmente operatori e predicati matematici per il calcolo del quoziente della divisione intera sono riportate nelle figg.~\ref{fig:minore?}, \ref{fig:sottrazione} e \ref{fig:appendix-quoziente-scheme}.
+Le procedure ricorsive per esprimere formalmente operatori e predicati matematici e per il calcolo del quoziente della divisione intera sono riportate nelle Figg.~\ref{fig:minore?}, \ref{fig:sottrazione} e \ref{fig:appendix-quoziente-scheme}.
 
 \begin{figure}[!htb]
   \centering
@@ -264,15 +254,12 @@ Le procedure ricorsive per esprimere formalmente operatori e predicati matematic
   \label{fig:sottrazione}
 \end{figure}
 
-% \begin{figure}[H] % 8 pagine...
 \begin{figure}[!htb]
   \centering
   \inputpygmented[lang=scheme]{listings/quoziente.scm}
   \caption{Definizione ricorsiva di \texttt{quoziente}}
   \label{fig:appendix-quoziente-scheme}
 \end{figure}
-
-%\FloatBarrier
 
 \label{sect:bib}
 \printbibliography

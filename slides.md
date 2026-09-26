@@ -47,26 +47,26 @@ Mostreremo come, partendo da un predicato e due primitive su numeri e liste, sia
 layout: itadinfo
 ---
 
-# Contesto e motivazione
+# Constesto, obiettivi, scelte metodologiche e strumenti
 
-## Quadro istituzionale
-### Il progetto PNRR e il gruppo classe
+## Contesto
+### Quadro istituzionale e _target_
+<!-- ### Il progetto PNRR e il gruppo classe -->
 
-<v-click>
-
-- **Ambito istituzionale:** Progetto PNRR (DM 65/2023) *"Citizen scientists of the future"*
-- **Target scolastico:** IIS "Savoia Benincasa" di Ancona, 15 studenti del primo biennio del Liceo Matematico
-- **Prerequisiti iniziali:** familiarità con aritmetica e calcolo parentesizzato; nessuna competenza pregressa di programmazione
-
-</v-click>
-
-## Il nodo pedagogico
-### Dal calcolo meccanico alla consapevolezza formale
+- Progetto PNRR (DM 65/2023) *"Citizen scientists of the future"* su discipline STEM
+- IIS "Savoia Benincasa" di Ancona, 15 studenti del primo biennio del **Liceo Matematico**
+- Prerequisiti familiarità con aritmetica e ordine delle operazioni
+- Nessuna competenza pregressa di programmazione richiesta
 
 <v-click>
 
-- **Prassi esecutiva vs comprensione:** gli studenti usano procedure aritmetiche meccaniche ("saper fare") ma non sanno ancora **descriverle come processi per un esecutore automatico**.
-- **Apprendimento significativo:** la pura memorizzazione non lascia traccia duratura; quasi nessuno studente ricorda il senso profondo della **divisione euclidea** (intera).
+### Bisogni formativi da soddifare
+<!-- ### Dal calcolo meccanico alla consapevolezza formale -->
+
+- **Dicotomia tra prassi esecutiva e comprensione**
+  - gli studenti usano procedure aritmetiche meccaniche ("saper fare") ma non sanno **descriverle come processi per un esecutore automatico**.
+- **Apprendimento: meccanivo vs significativo**
+  - la pura memorizzazione non lascia traccia duratura: quasi nessuno studente ricorda il significato della **divisione euclidea** (intera).
 
 </v-click>
 
@@ -83,9 +83,8 @@ L'aritmetica rigorosa funge qui da sostituto moderno del latino come palestra di
 layout: itadinfo
 ---
 
-# Obiettivi generali e visione pedagogica
+## Obiettivi generali e visione pedagogica
 
-## I pilastri formativi
 ### Dal "saper fare" al "saper far fare"
 
 - **Formalizzazione algoritmica:** rendere esplicito il processo di riscrittura
@@ -93,22 +92,27 @@ layout: itadinfo
 - **Struttura concettuale:** costruire una forma mentis fondata sulla *ricorsione strutturale*
 - **Sistemi formali:** eliminare ogni ambiguità sintattica e semantica
 
-## La scelta del paradigma
-### Un linguaggio rigoroso e disinteressato
+<div v-click.at="1">
+
+### Un linguaggio rigoroso
+
+</div>
 
 <v-switch>
 
 <template #1>
 
 - Quale linguaggio di programmazione adottare?
-  - [ ] Python
-  - [ ] JavaScript
-  - [ ] Prolog
-  - [ ] Scheme (Lisp)
+  - <input type="checkbox" disabled /> Python
+  - <input type="checkbox" disabled /> JavaScript
+  - <input type="checkbox" disabled /> Prolog
+  - <input type="checkbox" disabled /> Scheme (Lisp)
 
 </template>
 
 <template #2>
+
+<br/> 
 
 > In questo periodo infatti lo studio... deve essere (o apparire ai discenti) disinteressato, non avere cioè scopi pratici immediati... deve essere formativo, anche se 'istruttivo', cioè ricco di nozioni concrete.
 >
@@ -119,10 +123,10 @@ layout: itadinfo
 <template #3>
 
 - Quale linguaggio di programmazione adottare?
-  - [ ] Python
-  - [ ] JavaScript
-  - [ ] Prolog
-  - [x] Scheme con ambiente iniziale personalizzato
+  - <input type="checkbox" disabled /> Python
+  - <input type="checkbox" disabled /> JavaScript
+  - <input type="checkbox" disabled /> Prolog
+  - <input type="checkbox" checked disabled /> **Scheme** con ambiente iniziale personalizzato
 
 </template>
 
@@ -136,26 +140,27 @@ Gli obiettivi di alto livello sono:
 
 Gramsci sottolinea l'importanza di una scuola "disinteressata", non precocemente professionalizzante. Allo stesso modo, l'informatica nel Liceo non deve essere addestramento all'uso di software commerciali, ma studio formale dei processi di pensiero.
 
-Tra le varie opzioni, ho scelto Scheme, un dialetto Lisp nato per la didattica della struttura e dell'interpretazione dei programmi.
-Per rendere più significative e mnemoniche le procedure, ho modificato l'ambiente iniziale.
+Tra le varie opzioni, ho scelto Scheme, un dialetto Lisp nato per la didattica della struttura e dell'interpretazione dei programmi, con una teoria sul come la mente costruisce i pensieri.
+
+Tra vari linguaggi, ho scelto Scheme e, per avere "primitive" con nomi mnemonici e significativi, ho modificato l'ambiente iniziale (globale).
 -->
 
 ---
 layout: itadinfo
 ---
 
-# Obiettivi didattici specifici (proposta CINI)
+## Obiettivi didattici specifici (proposta CINI)
 
-## Traguardi di competenza
-### Modellizzazione e pensiero algoritmico
+### Traguardi di competenza
+<!-- ### Modellizzazione e pensiero algoritmico -->
 
 - **T-S-1:** comprende la necessità di fare riferimento a un esecutore automatico per esprimere algoritmi in modo non ambiguo
 - **T-S-2:** riconosce che un algoritmo risolve un problema nella sua generalità
 - **T-S-3:** giustifica la correttezza di un algoritmo rispetto a tale generalità
 - **T-S-6:** definisce, realizza e valida programmi che modellano processi familiari
 
-## Obiettivi di apprendimento operativi
-### Previsione e programmazione
+### Obiettivi di apprendimento operativi
+<!-- ### Previsione e programmazione -->
 
 - **O-S-P-2:** predire il risultato di un programma prima di farlo eseguire
 - **O-S-P-3:** utilizzare condizioni che impiegano operatori logici
@@ -176,20 +181,21 @@ I concetti chiave da costruire sono:
 layout: itadinfo
 ---
 
-# Metodologia e mediatori didattici
+## Metodologia e mediatori
 
-## Metodologia didattica
-### Risoluzione guidata e imitazione di schemi
+### Metodologia didattica
+<!-- ### Risoluzione guidata e imitazione di schemi -->
 
-- **Metodo dialogato:** conduzione maieutica basata su problemi guidati e discussione comune
-- **Esercizio formale e disciplinato:** apprendimento per imitazione e ripetizione sistematica
+- **Metodo dialogato:** domande e risposte su concetti e problemi
+- **Esercizio formale e disciplinato:** fasi di apprendimento per imitazione e ripetizione alternate da esercizi e riflessioni
 
-## Riferimenti teorici e storici
-### Ispirazioni pedagogiche
+### Riferimenti teorici e storici
+<!-- ### Ispirazioni pedagogiche -->
 
 - **Dan Friedman (*The Little Schemer*):** emergenza della ricorsione per ripetizione e schemi comuni
-- **Abelson & Sussman (*SICP*) e Felleisen et al. (*HtDP*):** scomposizione strutturale del dato
-- **Georges Cuisenaire e Giovanni Bosco:** l'aritmetica manipolativa dei "numeri in colore", il confronto iconico e la gradualità
+- **Abelson & Sussman (*SICP*) e Felleisen et al. (*HtDP*):** scomposizione strutturale del dato, rappresentazioni
+- **Georges Cuisenaire:** l'aritmetica manipolativa dei "numeri in colore"
+- **Giovanni Bosco:** *L’aritmetica ed il sistema metrico portati a semplicità per le classi elementari col confronto dei prezzi e delle misure antiche d’Italia in metrico-decimale*. 1881
 
 <!--
 Invece di calare la ricorsione come regola astratta, l'abbiamo fatta emergere per imitazione e ripetizione: gli studenti osservano procedure scritte, ne discutono la struttura e la riproducono su problemi nuovi.
@@ -201,22 +207,21 @@ Questo approccio metodico e disciplinato trova un riscontro nell'idea gramsciana
 layout: itadinfo
 ---
 
-# Linguaggio e ambiente di calcolo
+## Sottoinsieme Scheme e ambiente di valutazione
 
-## Il linguaggio Scheme
 ### Essenzialità sintattica: tre forme fondamentali
 
-- **`define`:** associazione univoca tra nomi e valori
-- **`lambda`:** astrazione funzionale pura
+- **`define`:** associazione tra nomi e valori
+- **`lambda`:** astrazione funzionale
 - **`cond`:** espressione condizionale multi-ramo
 
-Nessun costrutto imperativo accessorio (cicli `for`/`while`, mutazione di variabili): l'attenzione resta interamente focalizzata sulla struttura dei dati e delle funzioni.
+Nessun costrutto imperativo accessorio (cicli `for`/`while`, assegnamento di variabili): l'attenzione resta interamente focalizzata sulla struttura dei dati e delle funzioni.
 
-## Ambienti di sviluppo e visualizzazione
-### Accessibilità web senza installazione
+### Ambienti di sviluppo e visualizzazione
+<!-- ### Accessibilità web senza installazione -->
 
-- **WeScheme:** interprete didattico eseguibile direttamente nel browser
-- **ProcessVisualizer:** simulatore dei passi di riduzione per l'esecutore automatico
+- **[WeScheme](https://wescheme.org):** interprete didattico eseguibile direttamente nel browser
+- **[ProcessVisualizer](https://gionatamassibenincasa.github.io/process-visualizer):** simulatore dei passi di riduzione per l'esecutore automatico
 
 <!--
 WeScheme offre un ambiente accessibile che non richiede installazione. Scheme permette di costruire una forma mentis ricorsiva (la procedura ricalca la struttura induttiva del dato) senza la complessità sintattica dei linguaggi imperativi commerciali.
@@ -228,31 +233,31 @@ Come rimarcato da Gramsci, la sostituzione dei percorsi classici richiede materi
 layout: itadinfo
 ---
 
-# Incontri 1–3: fondamenti e ricorsione su liste
+# Articolazione del percorso
 
-## Articolazione delle prime tre sessioni
-### La progressione concettuale
+##  La progressione concettuale
 
-- **Incontro 1: Fondamenti di Scheme, espressioni e mediatori iconici**
-  - Notazione prefissa, atomi, liste e modello di valutazione per sostituzione
-  - I quattro mediatori iconici e il morphing verso la sintassi Scheme
+- **Incontro 1: espressioni, mediatori iconici e linguaggio Scheme**
+  - Espressioni numeriche con notazione infissa, atomi e espressioni composte, alberi sintattici, liste e modello di valutazione per sostituzione
 - **Incontro 2: Condizionali e struttura ricorsiva**
   - La forma `cond`, identificazione rigorosa del caso base e del passo ricorsivo
 - **Incontro 3: Procedure ricorsive su liste**
-  - Algoritmi di riconoscimento (`tutti-atomi?`), esplorazione e scomposizione `primo`/`resto`
+  - Algoritmi di riconoscimento (`lista-di-atomi?`), esplorazione e scomposizione `primo`/`resto`
+- **Incontri 4 e 5: Procedure ricorsive sui numeri naturali**:
+  - Applicazione del principio di induzione per la (ri-)costruzione dell'aritmetica
 
 <!--
-Nei primi tre incontri il lavoro parte dalla distinzione tra espressione e valutazione per poi approdare alla manipolazione ricorsiva delle liste.
+Nei primi tre incontri il lavoro parte dalla distinzione tra espressione e valutazione per poi approdare alla manipolazione ricorsiva delle liste. Negli ultimi due abbiamo giocato con i numeri!
 -->
 
 ---
 layout: itadinfo
 ---
 
-# Incontro 1: espressioni e ordine di valutazione
+## Incontro 1: espressioni aritmetiche e valutazione
 
-## Modello di calcolo per sostituzione
-### Riduzione meccanica di un'espressione aritmetica
+### Modello di calcolo per sostituzione e ordine di valutazione
+<!-- ### Riduzione meccanica di un'espressione aritmetica -->
 
 <div class="relative h-40 mt-12 text-5xl text-center">
 
@@ -304,64 +309,13 @@ Il modello di valutazione per sostituzione abitua gli studenti a considerare il 
 
 ---
 layout: itadinfo
----
-
-# Incontro 1: i quattro mediatori iconici
-
-## Trasposizioni visive dell'espressione (+ 1 2)
-### Molteplici linguaggi per distinguere espressione e valutazione
-
-<div class="grid grid-cols-2 gap-4 mt-2">
-  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
-    <div class="text-xs font-bold text-slate-800 mb-1">Scrittura prefissa (s-exp)</div>
-    <div class="h-16 flex items-center justify-center">
-      <img src="/assets/img/s-exp.svg" class="h-10 object-contain" alt="Espressione prefissa" />
-    </div>
-    <div class="text-[11px] text-slate-500 mt-1">Operatore anteposto agli argomenti</div>
-  </div>
-
-  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
-    <div class="text-xs font-bold text-slate-800 mb-1">Struttura a lista (cons cell)</div>
-    <div class="h-16 flex items-center justify-center">
-      <img src="/assets/img/lista.svg" class="h-12 object-contain" alt="Struttura a lista" />
-    </div>
-    <div class="text-[11px] text-slate-500 mt-1">Coppie di puntatori in memoria</div>
-  </div>
-
-  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
-    <div class="text-xs font-bold text-slate-800 mb-1">Albero sintattico (AST)</div>
-    <div class="h-18 flex items-center justify-center">
-      <img src="/assets/img/albero.svg" class="h-16 object-contain" alt="Albero sintattico" />
-    </div>
-    <div class="text-[11px] text-slate-500 mt-1">Gerarchia di rami dall'operatore</div>
-  </div>
-
-  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
-    <div class="text-xs font-bold text-slate-800 mb-1">Cerchio di valutazione (Bootstrap)</div>
-    <div class="h-18 flex items-center justify-center">
-      <img src="/assets/img/cerchio.svg" class="h-16 object-contain" alt="Cerchio di valutazione" />
-    </div>
-    <div class="text-[11px] text-slate-500 mt-1">Operatore in alto, argomenti in basso</div>
-  </div>
-</div>
-
-<div class="text-[11px] text-slate-600 dark:text-slate-400 mt-2 text-center">
-  A questi quattro mediatori per le espressioni si affianca il supporto manipolativo dei <strong>numeri in colore (regoli Cuisenaire)</strong> per la costruzione delle operazioni aritmetiche sui naturali.
-</div>
-
-<!--
-I quattro mediatori iconici consentono agli studenti di visualizzare la stessa struttura sintattica da prospettive complementari: simbolica, strutturale, ad albero e a contenitore geometrico.
--->
-
----
-layout: itadinfo
 clicks: 6
 ---
 
-# Incontro 1: morphing dai mediatori alla notazione prefissa
+## Incontro 1: dalle espressioni aritmetiche alla notazione prefissa
 
-## Transizione continua tra le rappresentazioni
-### Da (1 + (2 · 3)) a (+ 1 (· 2 3)) attraverso sette stadi
+### Rappresentazioni _isomorfe_
+<!-- ### Da (1 + (2 · 3)) a (+ 1 (· 2 3)) attraverso sette stadi -->
 
 <ExpressionMorph :click="$clicks" />
 
@@ -380,20 +334,87 @@ g) Linearizzando la lista otteniamo la notazione prefissa Scheme (+ 1 (· 2 3)),
 layout: itadinfo
 ---
 
-# Incontri 2 e 3: primitive linguistiche e ricorsione su liste
+## Incontro 1: mediatori iconici e/o rappresentazioni
 
-## Primitive per la manipolazione di liste
-### Costruttori, selettori e predicati fondamentali
+<!-- ## Trasposizioni visive dell'espressione (+ 1 2) -->
+### Molteplici linguaggi scritto/grafici per distinguere espressione e valutazione
 
-- **Costante terminale:** `lista-vuota` (`'()`)
+<div class="grid grid-cols-2 gap-4 mt-2">
+  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
+    <div class="text-xs font-bold text-slate-800 mb-1">Scrittura prefissa (s-exp)</div>
+    <div class="h-16 flex items-center justify-center">
+      <img src="/assets/img/s-exp.svg" class="h-10 object-contain" alt="Espressione prefissa" />
+    </div>
+    <div class="text-[11px] text-slate-500 mt-1">Operatore anteposto agli argomenti</div>
+  </div>
+
+  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
+    <div class="text-xs font-bold text-slate-800 mb-1">Struttura a lista</div>
+    <div class="h-16 flex items-center justify-center">
+      <img src="/assets/img/lista.svg" class="h-12 object-contain" alt="Struttura a lista" />
+    </div>
+    <div class="text-[11px] text-slate-500 mt-1">Coppie di puntatori primo/resto</div>
+  </div>
+
+  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
+    <div class="text-xs font-bold text-slate-800 mb-1">Albero sintattico</div>
+    <div class="h-18 flex items-center justify-center">
+      <img src="/assets/img/albero.svg" class="h-16 object-contain" alt="Albero sintattico" />
+    </div>
+    <div class="text-[11px] text-slate-500 mt-1">Gerarchia di rami dall'operatore</div>
+  </div>
+
+  <div class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center">
+    <div class="text-xs font-bold text-slate-800 mb-1">Cerchio di valutazione</div>
+    <div class="h-18 flex items-center justify-center">
+      <img src="/assets/img/cerchio.svg" class="h-16 object-contain" alt="Cerchio di valutazione" />
+    </div>
+    <div class="text-[11px] text-slate-500 mt-1">Operatore in alto, argomenti in basso</div>
+  </div>
+</div>
+
+<div class="text-[11px] text-slate-600 dark:text-slate-400 mt-2 text-center">
+  A questi quattro mediatori per le espressioni si affianca il supporto manipolativo dei <strong>numeri in colore (regoli Cuisenaire)</strong> per la costruzione delle operazioni aritmetiche sui naturali.
+</div>
+
+<!--
+I quattro mediatori iconici consentono agli studenti di visualizzare la stessa struttura sintattica da prospettive complementari: simbolica, strutturale, ad albero e a contenitore geometrico.
+-->
+
+
+---
+layout: itadinfo
+---
+
+## Incontro 2: primitive linguistiche e ricorsione
+
+### Termini
+
+- *variabile*
+- *creazione di procedura*
+- *applicazione di procedura*
+
+### Forme sintattiche e loro semantica
+
+- `define`, `cond` e `lambda`
+
+### Primitive per la manipolazione di liste e s-exp
+
+- **Costante terminale:** `lista-vuota`
+- **Costanti logiche:** `#f`, `#t`
 - **Predicati di tipo:** `atomo?`, `lista?`, `lista-vuota?`, `uguale?`
-- **Selettori e costruttori:** `primo` (`car`), `resto` (`cdr`), `anteponi` (`cons`), `lista`
+- **Selettori e costruttore:** `primo`, `resto`, `anteponi`
 
-## Struttura ricorsiva e predicati di verifica
-### Caso base e passo induttivo
+---
+layout: itadinfo
+---
+
+### Incontro 3: Struttura ricorsiva delle espressioni e predicati di verifica
+
+#### Caso base e passo induttivo
 
 ```scheme
-(define tutti-atomi?
+(define lista-di-atomi?
   (lambda (lst)
     (cond
       [(lista-vuota? lst) #t]
@@ -409,20 +430,20 @@ Fornendo agli studenti un insieme ridotto di primitive fondamentali, tutto il re
 layout: itadinfo
 ---
 
-# Incontri 4 e 5: aritmetica ricorsiva e assiomi di Peano
+## Incontro 4: aritmetica ricorsiva e assiomi di Peano
 
 <div class="grid grid-cols-12 gap-5 mt-1 items-start">
 <div class="col-span-7">
 
-## Primitive sui naturali e assiomi di Peano
-### Il sistema computazionale di Peano
+### Primitive sui naturali
+<!-- ### Il sistema computazionale di Peano -->
 
 - `zero?` : verifica del caso base ($n = 0$)
 - `s` : funzione successore unitario ($n + 1$)
 - `p` : funzione predecessore unitario ($n - 1$)
 
-## Costruzione ricorsiva dell'addizione
-### Tre piani integrati per (addizione 3 2)
+### Costruzione ricorsiva dell'addizione
+#### Tre livelli isomorfi per apprendere come calcolare (addizione 3 2)
 
 ```scheme
 (define addizione
@@ -455,12 +476,12 @@ I numeri in colore (regoli Cuisenaire) rendono tangibile la manipolazione e l'eq
 layout: itadinfo
 ---
 
-# Il caso emblematico: la divisione intera e l'operazione misteriosa
+## Incontro 5: l'operazione misteriosa
 
 <div class="grid grid-cols-12 gap-5 mt-1 items-start">
 <div class="col-span-7">
 
-## Introduzione euristica
+<!-- ## Introduzione euristica -->
 ### Analisi semantica di un listato oscurato
 
 - **Strategia didattica:** presentazione con nome oscurato `operazione-misteriosa`
@@ -501,15 +522,15 @@ layout: itadinfo
 
 # Risultati didattici e valore formativo
 
-## Evidenze di apprendimento
-### Competenze concettuali e metacognitive
+<!-- ## Evidenze di apprendimento -->
+## Competenze concettuali e metacognitive
 
 - **Esecuzione vs interpretazione:** gli studenti imparano a leggere i programmi come oggetti di studio e a predire i risultati
 - **Lessico disciplinare rigoroso:** assimilazione consapevole dei termini *espressione*, *procedura*, *caso base*, *argomento*, *parametro*
 - **Evoluzione cognitiva:** la ricorsione, da iniziale "artificio sintattico", diventa **metodo generale di scomposizione dei problemi**
 
 ## Impatto pedagogico
-### Una disciplina formativa per la scuola secondaria
+<!-- ### Una disciplina formativa per la scuola secondaria -->
 
 > Dimostrata la fattibilità nel primo biennio di un'Informatica fortemente disciplinare, capace di promuovere il pensiero critico.
 
@@ -522,9 +543,9 @@ In perfetto accordo con l'impostazione gramsciana, lo studio metodico di un sist
 layout: itadinfo
 ---
 
-# Limiti riscontrati e proposte di sviluppo
+## Limiti riscontrati e proposte di sviluppo
 
-## Limiti emersi
+<!-- ## Limiti emersi -->
 ### Complessità e vincoli temporali
 
 - **Soglia d'ingresso sintattica:** la notazione prefissa richiede un orientamento iniziale non banale
@@ -545,19 +566,19 @@ Come proposta di sviluppo, il trasferimento dei concetti ricorsivi in un linguag
 layout: itadinfo
 ---
 
-# Conclusioni
+## Conclusioni
 
-## Sintesi dell'esperienza
+<!-- ## Sintesi dell'esperienza -->
 ### L'informatica come disciplina formativa
 
 - **Rifiuto del riduzionismo pratico:** no all'Informatica intesa come mero addestramento all'uso di applicativi o software commerciali
 - **L'aritmetica ricorsiva come "nuovo latino":** una palestra logica disinteressata, rigorosa ed essenziale per il Liceo Matematico
 - **Ritorno alla consapevolezza:** il passaggio dal "saper fare" esecutivo al "saper far fare" formale offre agli studenti gli strumenti per comprendere davvero le strutture del calcolo
 
-<div class="text-center font-bold mt-6">
-  Grazie per l'attenzione!
-</div>
-
 <!--
 In conclusione, l'esperienza dimostra che l'Informatica, se insegnata attraverso le sue basi teoriche e formali, risponde appieno alla funzione educativa e culturale delineata da Gramsci per la scuola secondaria: formare menti capaci di astrarre, analizzare e ragionare in modo autonomo e consapevole.
 -->
+
+---
+
+<RetroFrontespizio />

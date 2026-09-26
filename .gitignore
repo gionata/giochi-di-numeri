@@ -1,4 +1,7 @@
 node_modules
 dist
+.agents
 .slidev
 .DS_Store
+refs
+pippo.md
