@@ -122,7 +122,7 @@ layout: itadinfo
   - [ ] Python
   - [ ] JavaScript
   - [ ] Prolog
-  - [X] Scheme con ambiente iniziale personalizzato
+  - [x] Scheme con ambiente iniziale personalizzato
 
 </template>
 
