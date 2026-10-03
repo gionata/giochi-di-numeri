@@ -3,6 +3,6 @@
     <div class="slidev-layout default">
       <slot />
     </div>
-    <Piede position="center"/>
+    <Piede position="left" />
   </div>
 </template>

@@ -35,7 +35,8 @@ const affiliationInfo = computed(() => {
 .autore {
   margin: 6px auto;
   text-align: center;
-  color: rgb(101, 102, 92);
+  color: --var(--slidev-theme-foreground, currentColor);
+  opacity: 0.85;
   font-size: 1.1rem;
   line-height: 1.3;
 }

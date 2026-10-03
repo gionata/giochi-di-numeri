@@ -15,17 +15,49 @@ comark: true
 # duration of the presentation
 duration: 15min
 date: 2026-10-11-T09:00
-location: Sala Elettra B (piano terra), centro congressi Palazzo della Salute, Via San Francesco 90. Padova.
+location: Sala Elettra Blu (piano terra), centro congressi Palazzo della Salute, Via San Francesco 90. Padova.
 ---
 
-<Frontespizio />
+<script setup>
+const titolo = 'Giochi di Numeri';
+const sottotitolo = "Dall'aritmetica al pensiero ricorsivo";
+const autori = [
+  {
+    nome: 'Gionata Massi',
+    affiliazione: 'IIS "Savoia Benincasa"',
+    citta: 'Ancona',
+    presentatore: true,
+  },
+  {
+    nome: 'Alberto Cesaretti e Pamela Sanchini',
+    affiliazione: 'Liceo Scientifico e Musicale "Einstein"',
+    citta: 'Rimini',
+    presentatore: false,
+  },
+];
+const conferenza = 'ITADINFO 2026';
+const citta = 'Padova';
+const data = '11/10/2026';
+// const luogo = 'Sala Elettra Blu (piano terra), centro congressi Palazzo della Salute, Via San Francesco 90. Padova.';
+const url = 'https://gionata.github.io/giochi-di-numeri/';
+</script>
+
+<Frontespizio
+  :titolo="titolo"
+  :sottotitolo="sottotitolo"
+  :autori="autori"
+  :conferenza="conferenza"
+  :citta="citta"
+  :data="data"
+  :url="url"
+/>
 
 <!--
 Buongiorno, sono Gionata Massi e ho il piacere di presentare l'esperienza didattica "Giochi di Numeri: dall'aritmetica al pensiero ricorsivo". Il percorso è stato svolto al Savoia Benincasa di Ancona, la mia scuola di titolarità, ed è stato sviluppato insieme ai colleghi Cesaretti e Sanchini dell'Einstein di Rimini.
 
 Il titolo, "Giochi di numeri", si riferisce all'oggetto che abbiamo manipolato, i numeri naturali, per ricostruire le operazioni che impariamo già nella scuola primaria. Abbiamo usato un approccio basato su metodologie didattiche dialogate, simili all'approccio didattico dell'aritmetica usato in Italia fino ai primi del Novecento, e la scomposizione induttiva.
 
-Il sottotitolo del corso, "dall'aritmetica al pensiero ricorsivo", sta ad indicare che l'obiettivo centrale è l'interiorizzazione della "ricorsione strutturale" lavorando sulla struttura dei numeri naturali per passare dal "saper fare" al "saper far fare".
+Il sottotitolo del corso, "dall'aritmetica al pensiero ricorsivo", sta ad indicare che l'obiettivo centrale è l'interiorizzazione della "ricorsione strutturale". Lavorando sulla struttura induttiva dei numeri naturali, e di altri problemi, vogliamo passare dalla competenza del "saper fare" a quella del "saper far fare".
 -->
 
 ---
@@ -38,9 +70,9 @@ hideInToc: true
 <Toc maxDepth="2" minDepth="1" text-sm/>
 
 <!--
-Vedremo il contesto, la cornice PNRR e le motivazioni pedagogiche legate all'insegnamento formativo dell'Informatica. Esamineremo gli obiettivi di apprendimento e la metodologia basata su mediatori iconici, strumenti simbolici e manipolativi.
+Vedremo il contesto e le motivazioni pedagogiche legate all'insegnamento formativo dell'Informatica. Esamineremo gli obiettivi di apprendimento e la metodologia basata su mediatori iconici, strumenti simbolici e manipolativi.
 
-Mostreremo come, partendo da un predicato e due primitive su numeri e liste, sia possibile costruire la notazione prefissa, l'addizione e la divisione euclidea ("operazione misteriosa"). Concluderemo con i risultati didattici, i limiti e la discussione del valore formativo della disciplina.
+Mostreremo come, partendo da un predicato e due primitive su numeri e liste, sia possibile costruire l'addizione e la divisione euclidea ("operazione misteriosa"). Concluderemo con i risultati didattici, i limiti e la discussione del valore formativo della disciplina "Informatica".
 -->
 
 ---
@@ -49,26 +81,52 @@ layout: itadinfo
 
 # Constesto, obiettivi, scelte metodologiche e strumenti
 
+<v-switch>
+
+<template #1>
+
 ## Contesto
+
 ### Quadro istituzionale e _target_
-<!-- ### Il progetto PNRR e il gruppo classe -->
 
-- Progetto PNRR (DM 65/2023) *"Citizen scientists of the future"* su discipline STEM
+- Progetto PNRR (DM 65/2023) sulle discipline STEM
 - IIS "Savoia Benincasa" di Ancona, 15 studenti del primo biennio del **Liceo Matematico**
-- Prerequisiti familiarità con aritmetica e ordine delle operazioni
-- Nessuna competenza pregressa di programmazione richiesta
 
-<v-click>
+## Prerequisiti
+- Familiarità con l'aritmetica: operatori e priorità
+- Nessuna competenza pregressa di programmazione richiesta!
 
-### Bisogni formativi da soddifare
-<!-- ### Dal calcolo meccanico alla consapevolezza formale -->
+</template>
+
+<template #2>
+
+## Bisogni formativi da soddifare
 
 - **Dicotomia tra prassi esecutiva e comprensione**
   - gli studenti usano procedure aritmetiche meccaniche ("saper fare") ma non sanno **descriverle come processi per un esecutore automatico**.
-- **Apprendimento: meccanivo vs significativo**
+- **Apprendimento: meccanico vs significativo**
   - la pura memorizzazione non lascia traccia duratura: quasi nessuno studente ricorda il significato della **divisione euclidea** (intera).
 
-</v-click>
+</template>
+
+<template #3>
+
+> Il calcolatore era (ed è ancora) un nuovo e meraviglioso concetto filosofico
+> e matematico. Il calcolatore è ancora più rivoluzionario come idea che come
+> congegno pratico che modifica la società -- e tutti sappiamo quanto abbia
+> cambiato la nostra vita.
+>
+> Perché lo dico? Perché il calcolatore cambia l'epistemologia, modifica il
+> significato del verbo «comprendere».
+> A mio giudizio, si capisce qualcosa solo se si è capaci -- noi, non altri! --
+> di scriverne il programma.
+> Altrimenti non si ha una vera comprensione, si crede soltanto di capire.
+>
+> -- Gregory Chaitin, *Alla ricerca di Omega*, Adelphi Edizioni
+
+</template>
+
+</v-switch>
 
 <!--
 Il corso si è rivolto a 15 studenti del primo biennio del Liceo Matematico. Con una tale platea è naturale inserire l'informatica nel contesto della matematica di base, dove lo studente sa associare significato alle forme.
@@ -87,8 +145,8 @@ layout: itadinfo
 
 ### Dal "saper fare" al "saper far fare"
 
-- **Formalizzazione algoritmica:** rendere esplicito il processo di riscrittura
-- **Modello di esecutore:** distinguere rigorosamente espressione e valutazione
+- **Formalizzazione algoritmica:** rendere esplicito il processo di valutazione
+- **Modello di esecutore:** distinguere rigorosamente forma e valutazione
 - **Struttura concettuale:** costruire una forma mentis fondata sulla *ricorsione strutturale*
 - **Sistemi formali:** eliminare ogni ambiguità sintattica e semantica
 
@@ -103,14 +161,14 @@ layout: itadinfo
 <template #1>
 
 - Quale linguaggio di programmazione adottare?
-  - <input type="checkbox" disabled /> Python
   - <input type="checkbox" disabled /> JavaScript
   - <input type="checkbox" disabled /> Prolog
-  - <input type="checkbox" disabled /> Scheme (Lisp)
+  - <input type="checkbox" disabled /> Python
+  - <input type="checkbox" disabled /> Lisp
 
 </template>
 
-<template #2>
+<!--template #2>
 
 <br/> 
 
@@ -118,14 +176,14 @@ layout: itadinfo
 >
 > — A. Gramsci, *Quaderno 12*
 
-</template>
+</template-->
 
-<template #3>
+<template #2>
 
 - Quale linguaggio di programmazione adottare?
-  - <input type="checkbox" disabled /> Python
   - <input type="checkbox" disabled /> JavaScript
   - <input type="checkbox" disabled /> Prolog
+  - <input type="checkbox" disabled /> Python
   - <input type="checkbox" checked disabled /> **Scheme** con ambiente iniziale personalizzato
 
 </template>
@@ -207,7 +265,7 @@ Questo approccio metodico e disciplinato trova un riscontro nell'idea gramsciana
 layout: itadinfo
 ---
 
-## Sottoinsieme Scheme e ambiente di valutazione
+## Scheme _semplificato_ e ambiente di valutazione
 
 ### Essenzialità sintattica: tre forme fondamentali
 
@@ -243,8 +301,10 @@ layout: itadinfo
   - La forma `cond`, identificazione rigorosa del caso base e del passo ricorsivo
 - **Incontro 3: Procedure ricorsive su liste**
   - Algoritmi di riconoscimento (`lista-di-atomi?`), esplorazione e scomposizione `primo`/`resto`
-- **Incontri 4 e 5: Procedure ricorsive sui numeri naturali**:
+- **Incontri 4: Procedure ricorsive sui numeri naturali**:
   - Applicazione del principio di induzione per la (ri-)costruzione dell'aritmetica
+- **Incontro 5: Dalla forma al significato delle procedure ricorsive**
+  - Esercizi per dare significato ai programmi
 
 <!--
 Nei primi tre incontri il lavoro parte dalla distinzione tra espressione e valutazione per poi approdare alla manipolazione ricorsiva delle liste. Negli ultimi due abbiamo giocato con i numeri!
@@ -310,6 +370,7 @@ Il modello di valutazione per sostituzione abitua gli studenti a considerare il 
 ---
 layout: itadinfo
 clicks: 6
+hideInToc: true
 ---
 
 ## Incontro 1: dalle espressioni aritmetiche alla notazione prefissa
@@ -332,6 +393,7 @@ g) Linearizzando la lista otteniamo la notazione prefissa Scheme (+ 1 (· 2 3)),
 
 ---
 layout: itadinfo
+hideInToc: true
 ---
 
 ## Incontro 1: mediatori iconici e/o rappresentazioni
@@ -381,6 +443,24 @@ layout: itadinfo
 I quattro mediatori iconici consentono agli studenti di visualizzare la stessa struttura sintattica da prospettive complementari: simbolica, strutturale, ad albero e a contenitore geometrico.
 -->
 
+---
+layout: itadinfo-logo-sx
+hideInToc: true
+clicks: 7
+---
+
+## Regole di valutazione
+
+- I valori dei numerali sono i numeri da essi rappresentati;
+- i valori degli operatori sono le sequenze di istruzioni che eseguono le corrispondenti operazioni;
+<!-- i valori degli altri identificatori (names) sono gli oggetti ad essi associati nell'ambiente. -->
+
+Per valutare una espressione:
+
+1. Valutare le sottoespressioni.
+2. Applicare la procedura risultante dalla valutazione della sottoespressione più a sinistra (l'operatore) agli argomenti ottenuti dalla valutazione delle altre sottoespressioni (gli operandi).
+
+<EvalutationMorph :click="$clicks" />
 
 ---
 layout: itadinfo
@@ -403,23 +483,40 @@ layout: itadinfo
 - **Costante terminale:** `lista-vuota`
 - **Costanti logiche:** `#f`, `#t`
 - **Predicati di tipo:** `atomo?`, `lista?`, `lista-vuota?`, `uguale?`
-- **Selettori e costruttore:** `primo`, `resto`, `anteponi`
+- **Selettori e costruttore:** `primo`, `resto`, `anteponi`, `lista`
 
 ---
 layout: itadinfo
 ---
 
-### Incontro 3: Struttura ricorsiva delle espressioni e predicati di verifica
+## Incontro 3: struttura ricorsiva di espressioni e predicati
 
 #### Caso base e passo induttivo
+
+```scheme
+(define lunghezza
+  (lambda (lst)
+    (cond
+      [(lista-vuota? lst) 0]
+      [else (+ 1 (lunghezza (resto lst)))])))
+```
 
 ```scheme
 (define lista-di-atomi?
   (lambda (lst)
     (cond
       [(lista-vuota? lst) #t]
-      [(atomo? (primo lst)) (tutti-atomi? (resto lst))]
+      [(atomo? (primo lst)) (lista-di-atomi? (resto lst))]
       [else #f])))
+```
+
+```scheme
+(define pari?
+  (lambda (n)
+    (cond
+      [(= n 0) #t]
+      [(= n 1) #f]
+      [else (pari? (- n 2))])))
 ```
 
 <!--
@@ -430,7 +527,8 @@ Fornendo agli studenti un insieme ridotto di primitive fondamentali, tutto il re
 layout: itadinfo
 ---
 
-## Incontro 4: aritmetica ricorsiva e assiomi di Peano
+## Incontro 4: aritmetica ricorsiva
+<!-- e assiomi di Peano -->
 
 <div class="grid grid-cols-12 gap-5 mt-1 items-start">
 <div class="col-span-7">
@@ -473,7 +571,7 @@ I numeri in colore (regoli Cuisenaire) rendono tangibile la manipolazione e l'eq
 -->
 
 ---
-layout: itadinfo
+layout: itadinfo-logo-dx
 ---
 
 ## Incontro 5: l'operazione misteriosa
@@ -575,10 +673,32 @@ layout: itadinfo
 - **L'aritmetica ricorsiva come "nuovo latino":** una palestra logica disinteressata, rigorosa ed essenziale per il Liceo Matematico
 - **Ritorno alla consapevolezza:** il passaggio dal "saper fare" esecutivo al "saper far fare" formale offre agli studenti gli strumenti per comprendere davvero le strutture del calcolo
 
+### Altri _Giochi di numeri_
+
+- SAT: criptoaritmetica, quadrati magici, sudoku...
+- Ottimizzazione discreta: zaino, assegnamento, trasporto...
+
 <!--
 In conclusione, l'esperienza dimostra che l'Informatica, se insegnata attraverso le sue basi teoriche e formali, risponde appieno alla funzione educativa e culturale delineata da Gramsci per la scuola secondaria: formare menti capaci di astrarre, analizzare e ragionare in modo autonomo e consapevole.
 -->
 
 ---
 
-<RetroFrontespizio />
+<RetroFrontespizio
+  titolo='Giochi di Numeri'
+  sottotitolo="Dall'aritmetica al pensiero ricorsivo"
+  :autori="[
+  {
+    nome: 'Gionata Massi',
+    affiliazione: 'IIS &quot;Savoia Benincasa&quot;',
+    citta: 'Ancona',
+    presentatore: true,
+  },
+  {
+    nome: 'Alberto Cesaretti e Pamela Sanchini',
+    affiliazione: 'Liceo Scientifico e Musicale &quot;Einstein&quot;',
+    citta: 'Rimini',
+    presentatore: false,
+  },
+]"
+/>

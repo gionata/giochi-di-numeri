@@ -22,11 +22,11 @@ watch(
 
 const steps = [
   { key: 'a', title: 'Espressione infissa con parentesi', code: '(1 + (2 · 3))' },
-  { key: 'b', title: 'Elevamento degli operatori', code: 'Elevazione di + e ·' },
-  { key: 'c', title: 'Cerchi di valutazione (Bootstrap World)', code: 'Cerchio esterno + e sotto-cerchio ·' },
+  { key: 'b', title: 'Elevamento degli operatori', code: 'Separazione degli operatori dagli operandi' },
+  { key: 'c', title: 'Cerchi di valutazione (Bootstrap World)', code: 'Cerchi di valutazione' },
   { key: 'd', title: 'Albero sintattico (AST)', code: 'Operatori nei nodi, operandi foglie' },
-  { key: 'e', title: 'Albero sintattico a nodi (SICP)', code: 'Operatore come primo elemento della lista' },
-  { key: 'f', title: 'Struttura a lista', code: 'Catena [primo | resto] con puntatori' },
+  { key: 'e', title: 'Albero sintattico (SICP)', code: 'Operatore come primo figlio, valore nel nodo radice' },
+  { key: 'f', title: 'Struttura a lista', code: 'Catena [primo | resto]' },
   { key: 'g', title: 'Notazione prefissa Scheme', code: '(+ 1 (· 2 3))' },
 ]
 
@@ -406,9 +406,9 @@ const parens = computed(() => {
           <!-- Box per sotto-espressione (· 2 3) -->
           <rect
             x="430"
-            y="165"
-            width="310"
-            height="60"
+            y="150"
+            width="320"
+            height="115"
             rx="10"
             fill="rgba(245, 158, 11, 0.06)"
             stroke="#f59e0b"
@@ -419,13 +419,14 @@ const parens = computed(() => {
           <!-- Box per l'intera espressione (+ 1 ...) -->
           <rect
             x="220"
-            y="150"
-            width="565"
-            height="90"
+            y="140"
+            width="580"
+            height="135"
             rx="14"
             fill="rgba(56, 189, 248, 0.04)"
             stroke="#38bdf8"
             stroke-width="1.5"
+            stroke-dasharray="4 4"
           />
         </g>
 
