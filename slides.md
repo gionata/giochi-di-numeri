@@ -493,6 +493,7 @@ layout: itadinfo
 
 #### Caso base e passo induttivo
 
+#### [Lunghezza](https://gionatamassibenincasa.github.io/process-visualizer/#BQEwpgZglgdlDOBjKACANgVxgcwBZgC8CBDAKBRWDWIFsAjEYyteAFwEpyLLEB7GEF26UqCVsQC0ANwy9xAfnRt2KAAydhFYMTSsATlBpgYrVMADUKAIzMseQiUp6wbXko7tPX0j6p38RExoYpIycsScfjgBjqJsTKrWKABMnkA)
 ```scheme
 (define lunghezza
   (lambda (lst)
@@ -500,7 +501,7 @@ layout: itadinfo
       [(lista-vuota? lst) 0]
       [else (+ 1 (lunghezza (resto lst)))])))
 ```
-
+#### [Lista di atomi](https://gionatamassibenincasa.github.io/process-visualizer/#BQEwpgZglgdlDOBjKACANggLgQwLQil20wHsBbKAfgCgUVg1syAjEbeteTASlrvsQkYIPv3oMseAG4BXEjkrou3FAGIeo-sGDFyJRcAAOAJyhkSSniolc8BIqQoHjYLhc5XeYujrSZTZGAwmKiqENwRvNQ2OPiEuk7okriy8ti8MXbxjlQckigADCgAjCgATBHRGLZxDuS5mXm2hSUqFdxAA)
 ```scheme
 (define lista-di-atomi?
   (lambda (lst)
@@ -509,7 +510,7 @@ layout: itadinfo
       [(atomo? (primo lst)) (lista-di-atomi? (resto lst))]
       [else #f])))
 ```
-
+#### [Pari](https://gionatamassibenincasa.github.io/process-visualizer/#BQEwpgZglgdlDOBjKACADgQwE5QPwCgUVgAbDAWwCMQNiYBKQo4xAexhCeeOAC8wsrXCgYoAxABdG3IsD4ChxNCPr1xEaTOAYSEnOTAwJqYJhzDgAWhEoATKoeN8p7HhQAGRi-MoAjF7M3eyA)
 ```scheme
 (define pari?
   (lambda (n)
@@ -540,7 +541,7 @@ layout: itadinfo
 - `s` : funzione successore unitario ($n + 1$)
 - `p` : funzione predecessore unitario ($n - 1$)
 
-### Costruzione ricorsiva dell'addizione
+### Costruzione ricorsiva dell'[addizione](https://gionatamassibenincasa.github.io/process-visualizer/#NwAghgtgRglgpgOwC5wFwgjBMIHsC0CArhHAE4yFhJFlgA2MAUABQAmcAZljAM4DGMcGzYwAXjFwI4TECBb1IUNmHkIMASllz5-KW2075LMeVwB+TSARajclgyQVSyIS17ywI8ZOnX5AA6aGiGhTKxeohJScCAAzCAATBpAA)
 #### Tre livelli isomorfi per apprendere come calcolare (addizione 3 2)
 
 ```scheme
@@ -579,13 +580,12 @@ layout: itadinfo-logo-dx
 <div class="grid grid-cols-12 gap-5 mt-1 items-start">
 <div class="col-span-7">
 
-<!-- ## Introduzione euristica -->
 ### Analisi semantica di un listato oscurato
 
 - **Strategia didattica:** presentazione con nome oscurato `operazione-misteriosa`
 - **Compito richiesto:** simulazione mentale di `(operazione-misteriosa 12 4)`
 
-## Riscoperta della divisione euclidea
+## Riscoperta della [divisione euclidea](https://gionatamassibenincasa.github.io/process-visualizer/#NwAghgtgRglgpgOwC5wFwgWJBaMATPbAZwHscIYEAoKgCjzgDNKYiBjGEARwFcSAveMjhUQIWgBtIUPGHEIQEAJSix4tiQR5Va8bQA8GRUpAAGFbrG0wEpACcYEREk60i43gKEpx2I8uMlIKCaWk9BZzgQAEYAJhAAFiUgA)
 ### Sottrazione ripetuta e astrazione funzionale
 
 ```scheme
