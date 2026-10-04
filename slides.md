@@ -57,7 +57,8 @@ Buongiorno, sono Gionata Massi e ho il piacere di presentare l'esperienza didatt
 
 Il titolo, "Giochi di numeri", si riferisce all'oggetto che abbiamo manipolato, i numeri naturali, per ricostruire le operazioni che impariamo già nella scuola primaria. Abbiamo usato un approccio basato su metodologie didattiche dialogate, simili all'approccio didattico dell'aritmetica usato in Italia fino ai primi del Novecento, e la scomposizione induttiva.
 
-Il sottotitolo del corso, "dall'aritmetica al pensiero ricorsivo", sta ad indicare che l'obiettivo centrale è l'interiorizzazione della "ricorsione strutturale". Lavorando sulla struttura induttiva dei numeri naturali, e di altri problemi, vogliamo passare dalla competenza del "saper fare" a quella del "saper far fare".
+Il sottotitolo del corso, "dall'aritmetica al pensiero ricorsivo", sta ad indicare che l'obiettivo centrale è l'interiorizzazione della "ricorsione strutturale". Lavorando sulla struttura induttiva dei numeri naturali, un modello applicabile a molti altri problemi non necessariamente numerici, vogliamo passare dalla competenza del "saper fare" a quella del "saper far fare".
+
 -->
 
 ---
@@ -70,9 +71,16 @@ hideInToc: true
 <Toc maxDepth="2" minDepth="1" text-sm/>
 
 <!--
-Vedremo il contesto e le motivazioni pedagogiche legate all'insegnamento formativo dell'Informatica. Esamineremo gli obiettivi di apprendimento e la metodologia basata su mediatori iconici, strumenti simbolici e manipolativi.
+Il percorso della presentazione si articola in quattro momenti principali.
 
-Mostreremo come, partendo da un predicato e due primitive su numeri e liste, sia possibile costruire l'addizione e la divisione euclidea ("operazione misteriosa"). Concluderemo con i risultati didattici, i limiti e la discussione del valore formativo della disciplina "Informatica".
+Inizieremo analizzando il contesto istituzionale, i bisogni formativi degli studenti e le scelte pedagogiche, fondate su un'idea di informatica rigorosa e disinteressata.
+
+Passeremo poi alla metodologia, illustrando l'integrazione tra mediatori iconici, strumenti manipolativi come i regoli Cuisenaire e un interprete Scheme.
+
+A seguire, mostreremo il cuore dell'esperienza: come, partendo da pochissime primitive, gli studenti abbiano ricostruito l'addizione e riscoperto la divisione euclidea come "operazione misteriosa".
+
+Infine, discuteremo i risultati didattici emersi, i limiti riscontrati e il profondo valore formativo della disciplina nell'istruzione secondaria.
+
 -->
 
 ---
@@ -129,12 +137,14 @@ layout: itadinfo
 </v-switch>
 
 <!--
-Il corso si è rivolto a 15 studenti del primo biennio del Liceo Matematico. Con una tale platea è naturale inserire l'informatica nel contesto della matematica di base, dove lo studente sa associare significato alle forme.
-Il passaggio dalla matematica all'informatica avviene nell'esplicitare ciò che prima era dato per scontato.
+Il progetto è stato realizzato nell'ambito dei fondi DM 65/2023 e ha coinvolto 15 studenti del primo biennio del Liceo Matematico ad Ancona, senza alcuna competenza pregressa di programmazione.
 
-Come notava Antonio Gramsci nei "Quaderni del carcere" (Quaderno 12):
-"La lingua latina e greca si imparava secondo grammatica, meccanicamente; ma c’è molta ingiustizia e improprietà nell’accusa di meccanicità... Si ha che fare con ragazzetti, ai quali occorre far contrarre certe abitudini di diligenza, di esattezza, di compostezza anche fisica, di concentrazione psichica... che non si possono acquistare senza una ripetizione meccanica di atti disciplinati e metodici."
-L'aritmetica rigorosa funge qui da sostituto moderno del latino come palestra di concentrazione.
+[click]
+Siamo partiti da un bisogno formativo fondamentale: superare la spaccatura tra prassi esecutiva e reale comprensione. Gli studenti eseguono procedure aritmetiche in modo meccanico, ma non sanno descriverle formalmente per un esecutore automatico. Inoltre, la pura memorizzazione non lascia tracce durature, come dimostra la diffusa incapacità di spiegare il senso della divisione euclidea.
+
+[click]
+Come scrive efficacemente Gregory Chaitin in "Alla ricerca di Omega", comprendere qualcosa significa essere capaci di scriverne il programma; altrimenti ci si limita a credere di aver capito. L'informatica modifica l'epistemologia del sapere, trasformando il calcolatore in un potente strumento filosofico per formalizzare il pensiero.
+
 -->
 
 ---
@@ -164,26 +174,27 @@ layout: itadinfo
   - <input type="checkbox" disabled /> JavaScript
   - <input type="checkbox" disabled /> Prolog
   - <input type="checkbox" disabled /> Python
-  - <input type="checkbox" disabled /> Lisp
+  - <input type="checkbox" disabled /> Scheme
 
 </template>
-
-<!--template #2>
-
-<br/> 
-
-> In questo periodo infatti lo studio... deve essere (o apparire ai discenti) disinteressato, non avere cioè scopi pratici immediati... deve essere formativo, anche se 'istruttivo', cioè ricco di nozioni concrete.
->
-> — A. Gramsci, *Quaderno 12*
-
-</template-->
 
 <template #2>
 
 - Quale linguaggio di programmazione adottare?
-  - <input type="checkbox" disabled /> JavaScript
-  - <input type="checkbox" disabled /> Prolog
-  - <input type="checkbox" disabled /> Python
+  - <input type="checkbox" disabled /> <span class="opacity-50 line-through">JavaScript</span>
+  - <input type="checkbox" disabled /> <span class="opacity-50 line-through">Prolog</span>
+  - <input type="checkbox" disabled /> <span class="opacity-50 line-through">Python</span>
+  - <input type="checkbox" checked disabled /> **Scheme** con ambiente iniziale personalizzato
+
+</template>
+
+<template #3>
+
+- Quale linguaggio di programmazione adottare?
+  - > In questo periodo infatti lo studio... deve essere (o apparire ai discenti) disinteressato, non avere cioè scopi pratici immediati... deve essere formativo, anche se 'istruttivo', cioè ricco di nozioni concrete.
+     >
+     > — A. Gramsci, *Quaderno 12*
+
   - <input type="checkbox" checked disabled /> **Scheme** con ambiente iniziale personalizzato
 
 </template>
@@ -191,16 +202,19 @@ layout: itadinfo
 </v-switch>
 
 <!--
-Gli obiettivi di alto livello sono:
-1. Imparare un modo di pensare generale che toglie i dettagli e fornisce uno schema per risolvere classi di problemi.
-2. Formalizzare le idee mediante un linguaggio testuale con regole rigide di interpretazione per poterci ragionare sopra.
-3. Comprendere la necessità di un esecutore meccanico e saperlo simulare.
+Gli obiettivi generali puntano a trasformare la forma mentis degli studenti: formalizzare i processi, distinguere la sintassi dalla valutazione e interiorizzare la ricorsione strutturale.
 
-Gramsci sottolinea l'importanza di una scuola "disinteressata", non precocemente professionalizzante. Allo stesso modo, l'informatica nel Liceo non deve essere addestramento all'uso di software commerciali, ma studio formale dei processi di pensiero.
+[click]
+Per raggiungere questo rigore, la scelta del linguaggio di programmazione diventa cruciale.
 
-Tra le varie opzioni, ho scelto Scheme, un dialetto Lisp nato per la didattica della struttura e dell'interpretazione dei programmi, con una teoria sul come la mente costruisce i pensieri.
+[click]
+Non abbiamo scelto linguaggi di ampio uso professionale come Python o JavaScript: la loro ricchezza di costrutti complessi e le eventuali competenze pregresse degli studenti rischierebbero di distrarre dal fine formativo del corso. Allo stesso modo, per rappresentare l'aritmetica di Peano, avremmo potuto sfruttare l'unificazione nativa di Prolog per destrutturare induttivamente i numeri naturali nei loro sottoproblemi. Abbiamo invece preferito Scheme.
 
-Tra vari linguaggi, ho scelto Scheme e, per avere "primitive" con nomi mnemonici e significativi, ho modificato l'ambiente iniziale (globale).
+La sua minimalità sintattica e l'adozione del nostro ambiente personalizzato costringono gli studenti a ragionare esplicitamente sulle funzioni di costruzione e selezione dei dati, incarnando appieno lo spirito didattico della struttura dei programmi.
+
+[click]
+Questa scelta rispecchia la visione pedagogica di Antonio Gramsci nel Quaderno 12: la scuola deve essere formativa e "disinteressata", cioè priva di scopi pratici o professionalizzanti immediati. Così come il latino e il greco fungevano da palestra logica per la concentrazione e la disciplina mentale, l'informatica formale e lo studio di Scheme rappresentano il nuovo "latino", capace di allenare all'astrazione rigorosa.
+
 -->
 
 ---
@@ -210,7 +224,6 @@ layout: itadinfo
 ## Obiettivi didattici specifici (proposta CINI)
 
 ### Traguardi di competenza
-<!-- ### Modellizzazione e pensiero algoritmico -->
 
 - **T-S-1:** comprende la necessità di fare riferimento a un esecutore automatico per esprimere algoritmi in modo non ambiguo
 - **T-S-2:** riconosce che un algoritmo risolve un problema nella sua generalità
@@ -218,7 +231,6 @@ layout: itadinfo
 - **T-S-6:** definisce, realizza e valida programmi che modellano processi familiari
 
 ### Obiettivi di apprendimento operativi
-<!-- ### Previsione e programmazione -->
 
 - **O-S-P-2:** predire il risultato di un programma prima di farlo eseguire
 - **O-S-P-3:** utilizzare condizioni che impiegano operatori logici
@@ -226,13 +238,14 @@ layout: itadinfo
 - **O-S-N-3:** identificare se e come i programmi possono essere modificati
 
 <!--
-Con particolare riferimento al contesto degli obiettivi della proposta di indicazioni nazionali del CINI, che individua nella secondaria di secondo grado il compito di sviluppare la competenza di modellizzare i problemi e progettare algoritmi.
-Trovate l'elenco nella diapositiva.
+Sul piano curricolare, il percorso si allinea rigorosamente con le indicazioni nazionali proposte dal CINI per la scuola secondaria di secondo grado.
 
-I concetti chiave da costruire sono:
-- Algoritmo come forma generale di ragionamento corretto su insiemi infiniti di istanze.
-- Computazione come passo di riscrittura meccanica dell'interprete.
-- Correttezza tramite lo schema induttivo della ricorsione strutturale.
+Tra i traguardi di competenza, sottolineiamo la capacità di fare riferimento a un esecutore automatico non ambiguo, di comprendere la generalità di un algoritmo e di descriverlo formalmente.
+
+A livello operativo, gli studenti apprendono a predire l'esito di un programma prima dell'esecuzione, a gestire la sintassi testuale e a modificare i programmi esistenti.
+
+I tre pilastri concettuali che ne derivano sono: l'algoritmo come forma universale di ragionamento, la computazione vista come riscrittura meccanica e la correttezza garantita dall'induzione strutturale.
+
 -->
 
 ---
@@ -242,23 +255,24 @@ layout: itadinfo
 ## Metodologia e mediatori
 
 ### Metodologia didattica
-<!-- ### Risoluzione guidata e imitazione di schemi -->
 
 - **Metodo dialogato:** domande e risposte su concetti e problemi
 - **Esercizio formale e disciplinato:** fasi di apprendimento per imitazione e ripetizione alternate da esercizi e riflessioni
 
 ### Riferimenti teorici e storici
-<!-- ### Ispirazioni pedagogiche -->
 
-- **Dan Friedman (*The Little Schemer*):** emergenza della ricorsione per ripetizione e schemi comuni
-- **Abelson & Sussman (*SICP*) e Felleisen et al. (*HtDP*):** scomposizione strutturale del dato, rappresentazioni
-- **Georges Cuisenaire:** l'aritmetica manipolativa dei "numeri in colore"
-- **Giovanni Bosco:** *L’aritmetica ed il sistema metrico portati a semplicità per le classi elementari col confronto dei prezzi e delle misure antiche d’Italia in metrico-decimale*. 1881
+- **Dan Friedman (*[The Little Schemer](https://felleisen.org/matthias/BTLS-index.html*):** emergenza della ricorsione per ripetizione e schemi comuni
+- **Abelson & Sussman (*[SICP](https://sarabander.github.io/sicp/*) e Felleisen et al. (*[HtDP](https://htdp.org/2026-5-28//Book/index.html)*):** scomposizione strutturale del dato, rappresentazioni
+- **Georges Cuisenaire:** l'aritmetica manipolativa dei "[numeri in colore](https://it.wikipedia.org/wiki/Regoli_Cuisenaire)"
+- **Giovanni Bosco:** *[L’aritmetica ed il sistema metrico portati a semplicità per le classi elementari col confronto dei prezzi e delle misure antiche d’Italia in metrico-decimale](https://www.salesian.online/wp-content/uploads/2022/01/Bosco_Aritmetica.pdf)*. 1881
 
 <!--
-Invece di calare la ricorsione come regola astratta, l'abbiamo fatta emergere per imitazione e ripetizione: gli studenti osservano procedure scritte, ne discutono la struttura e la riproducono su problemi nuovi.
+La metodologia adottata si basa sul metodo dialogato e sull'apprendimento per imitazione guidata.
 
-Questo approccio metodico e disciplinato trova un riscontro nell'idea gramsciana per cui la maturazione dell'astrazione passa attraverso l'esercizio costante e la padronanza delle forme.
+Dal punto di vista teorico, ci siamo ispirati a Dan Friedman con "The Little Schemer", da cui riprendiamo l'idea di far emergere gli schemi ricorsivi per ripetizione; Abelson e Sussman con SICP e Felleisen con HtDP per la scomposizione strutturale dei dati.
+
+A questi affianchiamo due riferimenti storici e manipolativi: i numeri in colore, per rappresentare visivamente le procedure aritmetiche, e i testi di aritmetica, tra cui quello di San Giovanni Bosco del 1881, che proponevano lo studio dell'aritmetica con un approccio dialogato basata sulla semplicità e la concretezza percettiva.
+
 -->
 
 ---
@@ -273,18 +287,20 @@ layout: itadinfo
 - **`lambda`:** astrazione funzionale
 - **`cond`:** espressione condizionale multi-ramo
 
-Nessun costrutto imperativo accessorio (cicli `for`/`while`, assegnamento di variabili): l'attenzione resta interamente focalizzata sulla struttura dei dati e delle funzioni.
+Nessun costrutto imperativo accessorio (assegnamento di variabili, cicli): l'attenzione resta interamente focalizzata sulla struttura dei dati e delle funzioni.
 
 ### Ambienti di sviluppo e visualizzazione
-<!-- ### Accessibilità web senza installazione -->
 
 - **[WeScheme](https://wescheme.org):** interprete didattico eseguibile direttamente nel browser
 - **[ProcessVisualizer](https://gionatamassibenincasa.github.io/process-visualizer):** simulatore dei passi di riduzione per l'esecutore automatico
 
 <!--
-WeScheme offre un ambiente accessibile che non richiede installazione. Scheme permette di costruire una forma mentis ricorsiva (la procedura ricalca la struttura induttiva del dato) senza la complessità sintattica dei linguaggi imperativi commerciali.
+Per ridurre al minimo la barriera sintattica, abbiamo isolato tre sole forme fondamentali in Scheme: `define` per le associazioni, `lambda` per l'astrazione funzionale e `cond` per le decisioni multi-ramo.
 
-Come rimarcato da Gramsci, la sostituzione dei percorsi classici richiede materie capaci di dare un risultato equivalente di formazione generale: Scheme garantisce questo rigore logico-formale.
+Abbiamo deliberatamente escluso ogni costrutto imperativo accessorio, come cicli o riassegnazioni di variabili, per focalizzare l'attenzione unicamente sulla struttura dei dati.
+
+Sul piano operativo, gli studenti utilizzano WeScheme, un ambiente cloud ad accesso immediato senza installazioni. La similazione è avvenuta alla lavagna, e solo successivamente ho costruito ProcessVisualizer, un simulatore sviluppato ad hoc che mostra passo-passo i passaggi di riduzione ed esecuzione svolti dall'interprete.
+
 -->
 
 ---
@@ -307,7 +323,14 @@ layout: itadinfo
   - Esercizi per dare significato ai programmi
 
 <!--
-Nei primi tre incontri il lavoro parte dalla distinzione tra espressione e valutazione per poi approdare alla manipolazione ricorsiva delle liste. Negli ultimi due abbiamo giocato con i numeri!
+Il percorso didattico si è sviluppato in 5 incontri di 2 ore ciascuno.
+
+Nel primo incontro abbiamo affrontato la distinzione tra espressione e valutazione attraverso la notazione infissa, gli alberi e le liste.
+
+Nel secondo e terzo incontro ci siamo concentrati sulle forme condizionali e sulla ricorsione su liste, abituando i ragazzi a identificare rigorosamente caso base e passo ricorsivo con predicati come `lista-di-atomi?`.
+
+Negli ultimi due incontri, infine, abbiamo trasferito questo impianto concettuale ai numeri naturali, ricostruendo induttivamente l'aritmetica di base e dando un significato semantico profondo alle procedure scritte.
+
 -->
 
 ---
@@ -317,7 +340,6 @@ layout: itadinfo
 ## Incontro 1: espressioni aritmetiche e valutazione
 
 ### Modello di calcolo per sostituzione e ordine di valutazione
-<!-- ### Riduzione meccanica di un'espressione aritmetica -->
 
 <div class="relative h-40 mt-12 text-5xl text-center">
 
@@ -364,7 +386,16 @@ $$
 </div>
 
 <!--
-Il modello di valutazione per sostituzione abitua gli studenti a considerare il calcolo come un processo di riscrittura a catena.
+Il primo passo fondamentale è comprendere il modello di calcolo per sostituzione.
+
+Osserviamo l'espressione classica 1 più 2 per 3. [click]
+L'esecutore automatico applica le regole di precedenza identificando la prima sotto-espressione da valutare: 2 per 3. [click]
+Questa viene sostituita dal suo valore, 6, ottenendo la nuova espressione 1 più 6. [click]
+Successivamente si individua l'operazione rimanente, [click]
+fino ad arrivare al valore finale stazionario 7.
+
+Questo esercizio abitua gli studenti a percepire la computazione non come un atto magico, ma come una sequenza deterministica e meccanica di riscritture a catena.
+
 -->
 
 ---
@@ -376,19 +407,20 @@ hideInToc: true
 ## Incontro 1: dalle espressioni aritmetiche alla notazione prefissa
 
 ### Rappresentazioni _isomorfe_
-<!-- ### Da (1 + (2 · 3)) a (+ 1 (· 2 3)) attraverso sette stadi -->
-
 <ExpressionMorph :click="$clicks" />
 
 <!--
-Questa animazione sintetizza l'intero percorso pedagogico di transizione tra rappresentazioni:
-a) Partiamo dall'espressione infissa completamente parentesizzata (1 + (2 · 3)).
-b) Elevando gli operatori facciamo emergere la gerarchia sintattica e semantica rispetto agli operandi.
-c) Nel Cerchio di Valutazione (Bootstrap World), l'operatore occupa la parte superiore e comanda i sotto-settori.
-d) L'AST binario classico mostra la gerarchia con operatori nei nodi interni e operandi come foglie.
-e) L'albero a nodi (stile SICP) tratta ogni combinazione come un nodo con 3 rami, dove il primo figlio è l'operatore.
-f) La struttura a lista / cons cell mostra la catena di coppie [car | cdr] in memoria che punta ad atomi e sotto-liste.
-g) Linearizzando la lista otteniamo la notazione prefissa Scheme (+ 1 (· 2 3)), priva di qualsiasi ambiguità sintattica.
+Nel primo incontro si vuole fornire il concetto di espressione simbolica, partendo dalle espressioni aritmetiche, derivando la notazione prefissa. Per enfatizzare il concetto che la notazione deve essere non ambigua si sono usati varie rappresentazioni diverse, tutte aventi la stessa informazione.
+
+Partiamo dall'espressione infissa completamente parentesizzata, così non abbiamo ambiguità sull'ordine delle operazioni: `(1 + (2 · 3))`. [click]
+Sollevando gli operatori facciamo emergere la gerarchia sintattica sugli operandi. [click]
+Passiamo al Cerchio di Valutazione del Bootstrap World, in cui l'operatore domina dall'alto i propri settori. [click]
+Evolviamo poi verso l'Albero Sintattico Astratto classico e [click] la struttura ad albero a nodi di derivazione SICP, dove il primo figlio è l'operatore. [click]
+Giungiamo così alla rappresentazione con liste concatenate. [click]
+Infine, serializzando la lista, otteniamo la notazione prefissa Scheme `(+ 1 (* 2 3))`.
+
+Gli studenti comprendono che le parentesi in Scheme non servono a stabilire priorità, ma a delimitare fisicamente i confini della struttura dati e, succesivamente, a denotare l'applicazione di un operatore ai suoi argomenti.
+
 -->
 
 ---
@@ -397,8 +429,6 @@ hideInToc: true
 ---
 
 ## Incontro 1: mediatori iconici e/o rappresentazioni
-
-<!-- ## Trasposizioni visive dell'espressione (+ 1 2) -->
 ### Molteplici linguaggi scritto/grafici per distinguere espressione e valutazione
 
 <div class="grid grid-cols-2 gap-4 mt-2">
@@ -440,7 +470,12 @@ hideInToc: true
 </div>
 
 <!--
-I quattro mediatori iconici consentono agli studenti di visualizzare la stessa struttura sintattica da prospettive complementari: simbolica, strutturale, ad albero e a contenitore geometrico.
+I quattro mediatori iconici utilizzati per l'espressione `(+ 1 2)` sono qui riassunti: la scrittura prefissa S-expression, la struttura a lista con selettori `primo` e `resto`, l'albero sintattico e il cerchio di valutazione.
+
+Ciascun mediatore offre un punto di vista complementare per separare l'espressione formale dal processo di valutazione.
+
+A queste quattro rappresentazioni simbolico-grafiche affianchiamo il supporto manipolativo dei numeri in colore, per rendere tangibile come le operazioni algebriche possano essere processi espressi, anche nel modo delle cose, con poche istruzioni primitive. I regoli permettono di realizzare fisicamente il processo di scomposizioni, composizioni e operazioni differite con il quale ri-fonderemo l'aritmetica.
+
 -->
 
 ---
@@ -453,7 +488,6 @@ clicks: 7
 
 - I valori dei numerali sono i numeri da essi rappresentati;
 - i valori degli operatori sono le sequenze di istruzioni che eseguono le corrispondenti operazioni;
-<!-- i valori degli altri identificatori (names) sono gli oggetti ad essi associati nell'ambiente. -->
 
 Per valutare una espressione:
 
@@ -461,6 +495,18 @@ Per valutare una espressione:
 2. Applicare la procedura risultante dalla valutazione della sottoespressione più a sinistra (l'operatore) agli argomenti ottenuti dalla valutazione delle altre sottoespressioni (gli operandi).
 
 <EvalutationMorph :click="$clicks" />
+
+<!--
+Tornando ai sistemi formali, le regole universali di valutazione di Scheme sono estremamente essenziali: il valore dei numerali è il numero corrispondente, quello degli operatori è nelle sequenze di istruzioni primitive e quello deii nomi è associato nell'ambiente.
+
+Per valutare una espressione con parentesi generica, l'esecutore segue due soli passi:
+Primo, valuta ricorsivamente tutte le sotto-espressioni;
+Secondo, applica la procedura ottenuta dalla sotto-espressione più a sinistra agli argomenti risultanti dalle altre.
+
+[click ... avanzi nei passi dell'animazione]
+Osserviamo come le chiamate annidate vengano ridotte gradualmente fino ad ottenere il valore finale.
+
+-->
 
 ---
 layout: itadinfo
@@ -483,7 +529,19 @@ layout: itadinfo
 - **Costante terminale:** `lista-vuota`
 - **Costanti logiche:** `#f`, `#t`
 - **Predicati di tipo:** `atomo?`, `lista?`, `lista-vuota?`, `uguale?`
-- **Selettori e costruttore:** `primo`, `resto`, `anteponi`, `lista`
+- **Selettori e costruttori:** `primo`, `resto`, `anteponi`, `lista`
+
+<!--
+Nel secondo incontro formalizziamo il lessico minimale del linguaggio.
+
+Distinguiamo con precisione i tre concetti chiave: variabile, creazione di procedura tramite `lambda` e applicazione della procedura agli argomenti.
+
+Forniamo quindi agli studenti un insieme volutamente ridotto di primitive: la costante terminale `lista-vuota`, i valori booleani, i predicati di tipo come `atomo?` e `lista-vuota?`, e gli operatori fondamentali di scomposizione e costruzione: `primo`, `resto` e `anteponi`.
+`lista` è stato introdotto solo per non dover aggiungere `quote` nella valutazione degli esempi.
+
+L'obiettivo pedagogico è mostrare che non servono decine di funzioni predefinite: qualsiasi computazione complessa può essere eretta su questi pochi mattoni fondamentali.
+
+-->
 
 ---
 layout: itadinfo
@@ -521,7 +579,16 @@ layout: itadinfo
 ```
 
 <!--
-Fornendo agli studenti un insieme ridotto di primitive fondamentali, tutto il resto del linguaggio e delle procedure su liste viene costruito per composizione ricorsiva.
+Nel terzo incontro guidiamo gli studenti nella scrittura delle prime procedure ricorsive su liste e numeri, strutturate sempre con la forma `cond`.
+
+Prendiamo ad esempio la funzione `lunghezza`: il caso base controlla se la lista è vuota restituendo `0`; altrimenti aggiunge `1` al calcolo ricorsivo sul `resto` della lista.
+
+Nel secondo esempio, `lista-di-atomi?`, verifichiamo la ricorsione su predicati booleani.
+
+Infine, con la procedura `pari?`, mostriamo come la ricorsione si applichi naturalmente ai numeri sottraendo `2` a ogni passo.
+
+Attraverso riscritture alla lavagna gli studenti osservano la catena di chiamate espandersi e poi contrarsi, cogliendo la perfetta corrispondenza tra la struttura del dato e la struttura del codice.
+
 -->
 
 ---
@@ -529,13 +596,11 @@ layout: itadinfo
 ---
 
 ## Incontro 4: aritmetica ricorsiva
-<!-- e assiomi di Peano -->
 
 <div class="grid grid-cols-12 gap-5 mt-1 items-start">
 <div class="col-span-7">
 
 ### Primitive sui naturali
-<!-- ### Il sistema computazionale di Peano -->
 
 - `zero?` : verifica del caso base ($n = 0$)
 - `s` : funzione successore unitario ($n + 1$)
@@ -566,9 +631,16 @@ layout: itadinfo
 </div>
 
 <!--
-Invece di usare tabelline o algoritmi in colonna, l'addizione viene definita unicamente tramite incremento/decremento unitario.
-Per calcolare (addizione 3 2), la procedura riduce il secondo argomento b verso 0, accumulando chiamate della funzione successore 's'. Raggiunto il caso base zero?, la catena di successori sospesi si contrae fornendo il risultato.
-I numeri in colore (regoli Cuisenaire) rendono tangibile la manipolazione e l'equivalenza numerica.
+Giunti al quarto incontro, trasferiamo la ricorsione all'aritmetica in un formalismo vicino a quello di Peano anche se non forniamo esplicitamente una definizione induttiva di numero naturale né un predicato di tipo.
+
+Dimentichiamo le tabelline e gli algoritmi in colonna: definiamo sui naturali con tre sole primitive: la verifica dello zero `zero?`, il successore `s` ed il predecessore `p`.
+
+Definiamo quindi l'addizione in Scheme: se il secondo addendo $b$ è zero, il risultato è $a$; altrimenti calcoliamo il successore dell'addizione tra $a$ e il predecessore di $b$.
+
+Sui tre livelli isomorfi — i "numeri in colore" sul piano manipolativo, la riscrittura simbolica e il grafico dei successori sospesi — gli studenti vedono che per calcolare `(addizione 3 2)`, la procedura decrementa $b$ accumulando chiamate a `s`, per poi contrarle al raggiungimento dello zero.
+
+Analogamente vengono fatte costruire le altre operazioni: sottrazione, moltiplicazione, elevamento a potenze, tetrazione.
+
 -->
 
 ---
@@ -609,9 +681,16 @@ layout: itadinfo-logo-dx
 </div>
 
 <!--
-La divisione euclidea, spesso memorizzata in modo arido alla scuola primaria, viene qui "smontata" e ricostruita tramite sottrazioni successive.
-L'uso di nomi non significativi come "operazione-misteriosa" stimola l'analisi interpretativa del codice: lo studente deve simulare l'esecutore per comprendere il significato semantico del programma.
-I numeri in colore mostrano visivamente come il segmento da 12 sia composto esattamente da 3 blocchi da 4.
+L'ultimo incontro rappresenta il culmine del percorso semantico. Presentiamo agli studenti un codice oscurato denominato `operazione-misteriosa`.
+
+Chiediamo loro di vestire i panni dell'esecutore e simulare mentalmente l'esecuzione di `(operazione-misteriosa 12 4)`.
+
+Attraverso la tracciatura dei passi, gli studenti dovrebbero "riscoprire" autonomamente la divisione euclidea intesa come sottrazione ripetuta.
+
+Nel codice della procedura `quoziente`, se il dividendo è minore del divisore il quoziente è `0`; altrimenti sommiamo `1` al quoziente tra la differenza e il divisore.
+
+Con i regoli la comprensione è facilitata: la composizione di barre lunga 12 viene coperta esattamente da 3 regoli da 4. Gli studenti passano così dal subire una regola aritmetica passiva al comprenderne la struttura algoritmica profonda.
+
 -->
 
 ---
@@ -620,21 +699,25 @@ layout: itadinfo
 
 # Risultati didattici e valore formativo
 
-<!-- ## Evidenze di apprendimento -->
 ## Competenze concettuali e metacognitive
 
 - **Esecuzione vs interpretazione:** gli studenti imparano a leggere i programmi come oggetti di studio e a predire i risultati
 - **Lessico disciplinare rigoroso:** assimilazione consapevole dei termini *espressione*, *procedura*, *caso base*, *argomento*, *parametro*
-- **Evoluzione cognitiva:** la ricorsione, da iniziale "artificio sintattico", diventa **metodo generale di scomposizione dei problemi**
+- **Evoluzione cognitiva:** la ricorsione, da iniziale "artificio sintattico", diventa **metodo generale di risoluzione dei problemi**
 
 ## Impatto pedagogico
-<!-- ### Una disciplina formativa per la scuola secondaria -->
 
-> Dimostrata la fattibilità nel primo biennio di un'Informatica fortemente disciplinare, capace di promuovere il pensiero critico.
+- Fattibilità nel primo biennio di un'Informatica **fortemente disciplinare**, capace di promuovere il ragionamento **formalmente corretto**.
 
 <!--
-L'esperienza ha confermato che anche nel primo biennio è possibile superare l'approccio puramente nozionistico o addestrativo.
-In perfetto accordo con l'impostazione gramsciana, lo studio metodico di un sistema formale rigido sviluppa capacità di astrazione, precisione concettuale e consapevolezza dei processi logici.
+I risultati didattici, sebbene non raccolti formalmente, confermano l'efficacia dell'approccio.
+
+Gli studenti distinguono l'esecuzione dall'interpretazione, sanno leggere il codice come oggetto di indagine e predicono con gli esiti delle computazioni.
+
+Hanno assimilato un lessico disciplinare rigoroso — distinguendo argomenti, parametri, espressioni e procedure — e hanno trasformato la ricorsione da artificio sintattico a metodo generale di risoluzione dei problemi.
+
+In sintesi, l'esperienza dimostra la piena fattibilità, già nel primo biennio liceale, di un'informatica fortemente disciplinare, capace di stimolare l'astrazione, il pensiero critico e forme di ragionamento corretto.
+
 -->
 
 ---
@@ -642,8 +725,6 @@ layout: itadinfo
 ---
 
 ## Limiti riscontrati e proposte di sviluppo
-
-<!-- ## Limiti emersi -->
 ### Complessità e vincoli temporali
 
 - **Soglia d'ingresso sintattica:** la notazione prefissa richiede un orientamento iniziale non banale
@@ -652,12 +733,19 @@ layout: itadinfo
 ## Proposte per le edizioni future
 ### Consolidamento e trasferibilità
 
-- **Verifiche strutturate:** introduzione di prove ex-ante ed ex-post per quantificare il guadagno formativo nella predizione dei programmi
+- **Verifiche strutturate:** introduzione di prove ex-ante ed ex-post per quantificare l'efficacia formativa
 - **Fase di trasferimento (transfer):** raccordo finale verso linguaggi testuali diffusi (es. Python) per mostrare la generalità dei concetti appresi
 
 <!--
-Tra i limiti va registrata la disparità nei tempi di assimilazione tra gli studenti.
-Come proposta di sviluppo, il trasferimento dei concetti ricorsivi in un linguaggio imperativo tradizionale consentirebbe di mostrare che la forma mentis acquisita è indipendente dal singolo strumento software utilizzato.
+Non sono mancati i limiti operativi.
+
+La notazione prefissa rappresenta una soglia d'ingresso iniziale che richiede tempo per essere assimilata. Inoltre, in sole 10 ore complessive, le intuizioni costruite sono state solide ma disomogenee nei tempi di assimilazione tra gli studenti.
+
+Per le edizioni future proponiamo due miglioramenti:
+
+In primo luogo, l'introduzione di test di verifica ex-ante ed ex-post strutturati per quantificare in modo oggettivo il valore formativo di questa proposta didattica.
+
+In secondo luogo, una fase finale di "transfer" tecnologico verso linguaggi diffusi come Python, dimostrando che la forma mentis ricorsiva acquisita è del tutto indipendente dal linguaggio utilizzato.
 -->
 
 ---
@@ -665,21 +753,24 @@ layout: itadinfo
 ---
 
 ## Conclusioni
-
-<!-- ## Sintesi dell'esperienza -->
 ### L'informatica come disciplina formativa
 
 - **Rifiuto del riduzionismo pratico:** no all'Informatica intesa come mero addestramento all'uso di applicativi o software commerciali
 - **L'aritmetica ricorsiva come "nuovo latino":** una palestra logica disinteressata, rigorosa ed essenziale per il Liceo Matematico
-- **Ritorno alla consapevolezza:** il passaggio dal "saper fare" esecutivo al "saper far fare" formale offre agli studenti gli strumenti per comprendere davvero le strutture del calcolo
+- **Intuzione della nozione di algoritmo:** il passaggio dal "saper fare" esecutivo al "saper far fare" formale offre agli studenti gli strumenti per comprendere davvero le strutture del calcolo
 
 ### Altri _Giochi di numeri_
 
-- SAT: criptoaritmetica, quadrati magici, sudoku...
+- Soddisfacibilità: criptoaritmetica, quadrati magici, sudoku...
 - Ottimizzazione discreta: zaino, assegnamento, trasporto...
 
 <!--
-In conclusione, l'esperienza dimostra che l'Informatica, se insegnata attraverso le sue basi teoriche e formali, risponde appieno alla funzione educativa e culturale delineata da Gramsci per la scuola secondaria: formare menti capaci di astrarre, analizzare e ragionare in modo autonomo e consapevole.
+In conclusione, questo percorso riafferma l'Informatica come disciplina formativa e culturale autonoma, rifiutando ogni riduzionismo pratico o addestramento all'uso di software commerciali.
+
+L'aritmetica ricorsiva dovrebbe funzionare come un "nuovo latino": una palestra di rigore logico disinteressato perfetta per il Liceo Matematico, capace di guidare i ragazzi dal "saper fare" al "saper far fare".
+
+La proposta iniziale, oltre al percorso che ho concluso di illustrare, prevedeva futuri "giochi di numeri": dai problemi che richiedono di trovare soluzioni ammissibili in uno spazio vincolato, come la criptoaritmetica, fino all'ottimizzazione discreta. Al momento sono solo idee in attesa di realizzazione.
+
 -->
 
 ---
@@ -702,3 +793,9 @@ In conclusione, l'esperienza dimostra che l'Informatica, se insegnata attraverso
   },
 ]"
 />
+
+<!--
+Vi ringrazio molto per l'attenzione.
+Sono ora a vostra disposizione per domande, curiosità o approfondimenti su questa esperienza.
+
+-->

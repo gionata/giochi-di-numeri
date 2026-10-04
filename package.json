@@ -17,5 +17,8 @@
   },
   "patchedDependencies": {
     "@shikijs/vitepress-twoslash@4.5.0": "patches/@shikijs%2Fvitepress-twoslash@4.5.0.patch"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.63.0"
   }
 }
