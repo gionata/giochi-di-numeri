@@ -1,0 +1,246 @@
+## Slide 1: Giochi di Numeri:\
+Dall'aritmetica al pensiero ricorsivo
+
+
+Buongiorno, sono Gionata Massi e ho il piacere di presentare l'esperienza didattica "Giochi di Numeri: dall'aritmetica al pensiero ricorsivo". Il percorso è stato svolto al Savoia Benincasa di Ancona, la mia scuola di titolarità, ed è stato sviluppato insieme ai colleghi Cesaretti e Sanchini dell'Einstein di Rimini.
+
+Il titolo, "Giochi di numeri", si riferisce all'oggetto che abbiamo manipolato, i numeri naturali, per ricostruire le operazioni che impariamo già nella scuola primaria. Abbiamo usato un approccio basato su metodologie didattiche dialogate, simili all'approccio didattico dell'aritmetica usato in Italia fino ai primi del Novecento, e la scomposizione induttiva.
+
+Il sottotitolo del corso, "dall'aritmetica al pensiero ricorsivo", sta ad indicare che l'obiettivo centrale è l'interiorizzazione della "ricorsione strutturale". Lavorando sulla struttura induttiva dei numeri naturali, un modello applicabile a molti altri problemi non necessariamente numerici, vogliamo passare dalla competenza del "saper fare" a quella del "saper far fare".
+
+---
+
+## Slide 2: Piano della presentazione
+
+Il percorso della presentazione si articola in quattro momenti principali.
+
+Inizieremo analizzando il contesto istituzionale, i bisogni formativi degli studenti e le scelte pedagogiche, fondate su un'idea di informatica rigorosa e disinteressata.
+
+Passeremo poi alla metodologia, illustrando l'integrazione tra mediatori iconici, strumenti manipolativi come i regoli Cuisenaire e un interprete Scheme.
+
+A seguire, mostreremo il cuore dell'esperienza: come, partendo da pochissime primitive, gli studenti abbiano ricostruito l'addizione e riscoperto la divisione euclidea come "operazione misteriosa".
+
+Infine, discuteremo i risultati didattici emersi, i limiti riscontrati e il profondo valore formativo della disciplina nell'istruzione secondaria.
+
+---
+
+## Slide 3: Constesto, obiettivi, scelte metodologiche e strumenti
+
+Il progetto è stato realizzato nell'ambito dei fondi DM 65/2023 e ha coinvolto 15 studenti del primo biennio del Liceo Matematico ad Ancona, senza alcuna competenza pregressa di programmazione.
+
+[click]
+Siamo partiti da un bisogno formativo fondamentale: superare la spaccatura tra prassi esecutiva e reale comprensione. Gli studenti eseguono procedure aritmetiche in modo meccanico, ma non sanno descriverle formalmente per un esecutore automatico. Inoltre, la pura memorizzazione non lascia tracce durature, come dimostra la diffusa incapacità di spiegare il senso della divisione euclidea.
+
+[click]
+Come scrive efficacemente Gregory Chaitin in "Alla ricerca di Omega", comprendere qualcosa significa essere capaci di scriverne il programma; altrimenti ci si limita a credere di aver capito. L'informatica modifica l'epistemologia del sapere, trasformando il calcolatore in un potente strumento filosofico per formalizzare il pensiero.
+
+---
+
+## Slide 4: Obiettivi generali e visione pedagogica
+
+Gli obiettivi generali puntano a trasformare la forma mentis degli studenti: formalizzare i processi, distinguere la sintassi dalla valutazione e interiorizzare la ricorsione strutturale.
+
+[click]
+Per raggiungere questo rigore, la scelta del linguaggio di programmazione diventa cruciale.
+
+[click]
+Non abbiamo scelto linguaggi di ampio uso professionale come Python o JavaScript: la loro ricchezza di costrutti complessi e le eventuali competenze pregresse degli studenti rischierebbero di distrarre dal fine formativo del corso. Allo stesso modo, per rappresentare l'aritmetica di Peano, avremmo potuto sfruttare l'unificazione nativa di Prolog per destrutturare induttivamente i numeri naturali nei loro sottoproblemi. Abbiamo invece preferito Scheme.
+
+La sua minimalità sintattica e l'adozione del nostro ambiente personalizzato costringono gli studenti a ragionare esplicitamente sulle funzioni di costruzione e selezione dei dati, incarnando appieno lo spirito didattico della struttura dei programmi.
+
+[click]
+Questa scelta rispecchia la visione pedagogica di Antonio Gramsci nel Quaderno 12: la scuola deve essere formativa e "disinteressata", cioè priva di scopi pratici o professionalizzanti immediati. Così come il latino e il greco fungevano da palestra logica per la concentrazione e la disciplina mentale, l'informatica formale e lo studio di Scheme rappresentano il nuovo "latino", capace di allenare all'astrazione rigorosa.
+
+---
+
+## Slide 5: Obiettivi didattici specifici (proposta CINI)
+
+Sul piano curricolare, il percorso si allinea rigorosamente con le indicazioni nazionali proposte dal CINI per la scuola secondaria di secondo grado.
+
+Tra i traguardi di competenza, sottolineiamo la capacità di fare riferimento a un esecutore automatico non ambiguo, di comprendere la generalità di un algoritmo e di descriverlo formalmente.
+
+A livello operativo, gli studenti apprendono a predire l'esito di un programma prima dell'esecuzione, a gestire la sintassi testuale e a modificare i programmi esistenti.
+
+I tre pilastri concettuali che ne derivano sono: l'algoritmo come forma universale di ragionamento, la computazione vista come riscrittura meccanica e la correttezza garantita dall'induzione strutturale.
+
+---
+
+## Slide 6: Metodologia e mediatori
+
+La metodologia adottata si basa sul metodo dialogato e sull'apprendimento per imitazione guidata.
+
+Dal punto di vista teorico, ci siamo ispirati a Dan Friedman con "The Little Schemer", da cui riprendiamo l'idea di far emergere gli schemi ricorsivi per ripetizione; Abelson e Sussman con SICP e Felleisen con HtDP per la scomposizione strutturale dei dati.
+
+A questi affianchiamo due riferimenti storici e manipolativi: i numeri in colore, per rappresentare visivamente le procedure aritmetiche, e i testi di aritmetica, tra cui quello di San Giovanni Bosco del 1881, che proponevano lo studio dell'aritmetica con un approccio dialogato basata sulla semplicità e la concretezza percettiva.
+
+---
+
+## Slide 7: Scheme _semplificato_ e ambiente di valutazione
+
+Per ridurre al minimo la barriera sintattica, abbiamo isolato tre sole forme fondamentali in Scheme: `define` per le associazioni, `lambda` per l'astrazione funzionale e `cond` per le decisioni multi-ramo.
+
+Abbiamo deliberatamente escluso ogni costrutto imperativo accessorio, come cicli o riassegnazioni di variabili, per focalizzare l'attenzione unicamente sulla struttura dei dati.
+
+Sul piano operativo, gli studenti utilizzano WeScheme, un ambiente cloud ad accesso immediato senza installazioni. La similazione è avvenuta alla lavagna, e solo successivamente ho costruito ProcessVisualizer, un simulatore sviluppato ad hoc che mostra passo-passo i passaggi di riduzione ed esecuzione svolti dall'interprete.
+
+---
+
+## Slide 8: Articolazione del percorso
+
+Il percorso didattico si è sviluppato in 5 incontri di 2 ore ciascuno.
+
+Nel primo incontro abbiamo affrontato la distinzione tra espressione e valutazione attraverso la notazione infissa, gli alberi e le liste.
+
+Nel secondo e terzo incontro ci siamo concentrati sulle forme condizionali e sulla ricorsione su liste, abituando i ragazzi a identificare rigorosamente caso base e passo ricorsivo con predicati come `lista-di-atomi?`.
+
+Negli ultimi due incontri, infine, abbiamo trasferito questo impianto concettuale ai numeri naturali, ricostruendo induttivamente l'aritmetica di base e dando un significato semantico profondo alle procedure scritte.
+
+---
+
+## Slide 9: Incontro 1: espressioni aritmetiche e valutazione
+
+Il primo passo fondamentale è comprendere il modello di calcolo per sostituzione.
+
+Osserviamo l'espressione classica 1 più 2 per 3. [click]
+L'esecutore automatico applica le regole di precedenza identificando la prima sotto-espressione da valutare: 2 per 3. [click]
+Questa viene sostituita dal suo valore, 6, ottenendo la nuova espressione 1 più 6. [click]
+Successivamente si individua l'operazione rimanente, [click]
+fino ad arrivare al valore finale stazionario 7.
+
+Questo esercizio abitua gli studenti a percepire la computazione non come un atto magico, ma come una sequenza deterministica e meccanica di riscritture a catena.
+
+---
+
+## Slide 10: Incontro 1: dalle espressioni aritmetiche alla notazione prefissa
+
+Nel primo incontro si vuole fornire il concetto di espressione simbolica, partendo dalle espressioni aritmetiche, derivando la notazione prefissa. Per enfatizzare il concetto che la notazione deve essere non ambigua si sono usati varie rappresentazioni diverse, tutte aventi la stessa informazione.
+
+Partiamo dall'espressione infissa completamente parentesizzata, così non abbiamo ambiguità sull'ordine delle operazioni: `(1 + (2 · 3))`. [click]
+Sollevando gli operatori facciamo emergere la gerarchia sintattica sugli operandi. [click]
+Passiamo al Cerchio di Valutazione del Bootstrap World, in cui l'operatore domina dall'alto i propri settori. [click]
+Evolviamo poi verso l'Albero Sintattico Astratto classico e [click] la struttura ad albero a nodi di derivazione SICP, dove il primo figlio è l'operatore. [click]
+Giungiamo così alla rappresentazione con liste concatenate. [click]
+Infine, serializzando la lista, otteniamo la notazione prefissa Scheme `(+ 1 (* 2 3))`.
+
+Gli studenti comprendono che le parentesi in Scheme non servono a stabilire priorità, ma a delimitare fisicamente i confini della struttura dati e, succesivamente, a denotare l'applicazione di un operatore ai suoi argomenti.
+
+---
+
+## Slide 11: Incontro 1: mediatori iconici e/o rappresentazioni
+
+I quattro mediatori iconici utilizzati per l'espressione `(+ 1 2)` sono qui riassunti: la scrittura prefissa S-expression, la struttura a lista con selettori `primo` e `resto`, l'albero sintattico e il cerchio di valutazione.
+
+Ciascun mediatore offre un punto di vista complementare per separare l'espressione formale dal processo di valutazione.
+
+A queste quattro rappresentazioni simbolico-grafiche affianchiamo il supporto manipolativo dei numeri in colore, per rendere tangibile come le operazioni algebriche possano essere processi espressi, anche nel modo delle cose, con poche istruzioni primitive. I regoli permettono di realizzare fisicamente il processo di scomposizioni, composizioni e operazioni differite con il quale ri-fonderemo l'aritmetica.
+
+---
+
+## Slide 12: Regole di valutazione
+
+Tornando ai sistemi formali, le regole universali di valutazione di Scheme sono estremamente essenziali: il valore dei numerali è il numero corrispondente, quello degli operatori è nelle sequenze di istruzioni primitive e quello deii nomi è associato nell'ambiente.
+
+Per valutare una espressione con parentesi generica, l'esecutore segue due soli passi:
+Primo, valuta ricorsivamente tutte le sotto-espressioni;
+Secondo, applica la procedura ottenuta dalla sotto-espressione più a sinistra agli argomenti risultanti dalle altre.
+
+[click ... avanzi nei passi dell'animazione]
+Osserviamo come le chiamate annidate vengano ridotte gradualmente fino ad ottenere il valore finale.
+
+---
+
+## Slide 13: Incontro 2: primitive linguistiche e ricorsione
+
+Nel secondo incontro formalizziamo il lessico minimale del linguaggio.
+
+Distinguiamo con precisione i tre concetti chiave: variabile, creazione di procedura tramite `lambda` e applicazione della procedura agli argomenti.
+
+Forniamo quindi agli studenti un insieme volutamente ridotto di primitive: la costante terminale `lista-vuota`, i valori booleani, i predicati di tipo come `atomo?` e `lista-vuota?`, e gli operatori fondamentali di scomposizione e costruzione: `primo`, `resto` e `anteponi`.
+`lista` è stato introdotto solo per non dover aggiungere `quote` nella valutazione degli esempi.
+
+L'obiettivo pedagogico è mostrare che non servono decine di funzioni predefinite: qualsiasi computazione complessa può essere eretta su questi pochi mattoni fondamentali.
+
+---
+
+## Slide 14: Incontro 3: struttura ricorsiva di espressioni e predicati
+
+Nel terzo incontro guidiamo gli studenti nella scrittura delle prime procedure ricorsive su liste e numeri, strutturate sempre con la forma `cond`.
+
+Prendiamo ad esempio la funzione `lunghezza`: il caso base controlla se la lista è vuota restituendo `0`; altrimenti aggiunge `1` al calcolo ricorsivo sul `resto` della lista.
+
+Nel secondo esempio, `lista-di-atomi?`, verifichiamo la ricorsione su predicati booleani.
+
+Infine, con la procedura `pari?`, mostriamo come la ricorsione si applichi naturalmente ai numeri sottraendo `2` a ogni passo.
+
+Attraverso riscritture alla lavagna gli studenti osservano la catena di chiamate espandersi e poi contrarsi, cogliendo la perfetta corrispondenza tra la struttura del dato e la struttura del codice.
+
+---
+
+## Slide 15: Incontro 4: aritmetica ricorsiva
+
+Giunti al quarto incontro, trasferiamo la ricorsione all'aritmetica in un formalismo vicino a quello di Peano anche se non forniamo esplicitamente una definizione induttiva di numero naturale né un predicato di tipo.
+
+Dimentichiamo le tabelline e gli algoritmi in colonna: definiamo sui naturali con tre sole primitive: la verifica dello zero `zero?`, il successore `s` ed il predecessore `p`.
+
+Definiamo quindi l'addizione in Scheme: se il secondo addendo $b$ è zero, il risultato è $a$; altrimenti calcoliamo il successore dell'addizione tra $a$ e il predecessore di $b$.
+
+Sui tre livelli isomorfi — i "numeri in colore" sul piano manipolativo, la riscrittura simbolica e il grafico dei successori sospesi — gli studenti vedono che per calcolare `(addizione 3 2)`, la procedura decrementa $b$ accumulando chiamate a `s`, per poi contrarle al raggiungimento dello zero.
+
+Analogamente vengono fatte costruire le altre operazioni: sottrazione, moltiplicazione, elevamento a potenze, tetrazione.
+
+---
+
+## Slide 16: Incontro 5: l'operazione misteriosa
+
+L'ultimo incontro rappresenta il culmine del percorso semantico. Presentiamo agli studenti un codice oscurato denominato `operazione-misteriosa`.
+
+Chiediamo loro di vestire i panni dell'esecutore e simulare mentalmente l'esecuzione di `(operazione-misteriosa 12 4)`.
+
+Attraverso la tracciatura dei passi, gli studenti dovrebbero "riscoprire" autonomamente la divisione euclidea intesa come sottrazione ripetuta.
+
+Nel codice della procedura `quoziente`, se il dividendo è minore del divisore il quoziente è `0`; altrimenti sommiamo `1` al quoziente tra la differenza e il divisore.
+
+Con i regoli la comprensione è facilitata: la composizione di barre lunga 12 viene coperta esattamente da 3 regoli da 4. Gli studenti passano così dal subire una regola aritmetica passiva al comprenderne la struttura algoritmica profonda.
+
+---
+
+## Slide 17: Risultati didattici e valore formativo
+
+I risultati didattici, sebbene non raccolti formalmente, confermano l'efficacia dell'approccio.
+
+Gli studenti distinguono l'esecuzione dall'interpretazione, sanno leggere il codice come oggetto di indagine e predicono con gli esiti delle computazioni.
+
+Hanno assimilato un lessico disciplinare rigoroso — distinguendo argomenti, parametri, espressioni e procedure — e hanno trasformato la ricorsione da artificio sintattico a metodo generale di risoluzione dei problemi.
+
+In sintesi, l'esperienza dimostra la piena fattibilità, già nel primo biennio liceale, di un'informatica fortemente disciplinare, capace di stimolare l'astrazione, il pensiero critico e forme di ragionamento corretto.
+
+---
+
+## Slide 18: Limiti riscontrati e proposte di sviluppo
+
+Non sono mancati i limiti operativi.
+
+La notazione prefissa rappresenta una soglia d'ingresso iniziale che richiede tempo per essere assimilata. Inoltre, in sole 10 ore complessive, le intuizioni costruite sono state solide ma disomogenee nei tempi di assimilazione tra gli studenti.
+
+Per le edizioni future proponiamo due miglioramenti:
+
+In primo luogo, l'introduzione di test di verifica ex-ante ed ex-post strutturati per quantificare in modo oggettivo il valore formativo di questa proposta didattica.
+
+In secondo luogo, una fase finale di "transfer" tecnologico verso linguaggi diffusi come Python, dimostrando che la forma mentis ricorsiva acquisita è del tutto indipendente dal linguaggio utilizzato.
+
+---
+
+## Slide 19: Conclusioni
+
+In conclusione, questo percorso riafferma l'Informatica come disciplina formativa e culturale autonoma, rifiutando ogni riduzionismo pratico o addestramento all'uso di software commerciali.
+
+L'aritmetica ricorsiva dovrebbe funzionare come un "nuovo latino": una palestra di rigore logico disinteressato perfetta per il Liceo Matematico, capace di guidare i ragazzi dal "saper fare" al "saper far fare".
+
+La proposta iniziale, oltre al percorso che ho concluso di illustrare, prevedeva futuri "giochi di numeri": dai problemi che richiedono di trovare soluzioni ammissibili in uno spazio vincolato, come la criptoaritmetica, fino all'ottimizzazione discreta. Al momento sono solo idee in attesa di realizzazione.
+
+---
+
+## Slide 20
+
+Vi ringrazio molto per l'attenzione.
+Sono ora a vostra disposizione per domande, curiosità o approfondimenti su questa esperienza.
