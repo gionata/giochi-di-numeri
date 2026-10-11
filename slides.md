@@ -261,10 +261,10 @@ layout: itadinfo
 
 ### Riferimenti teorici e storici
 
-- **Dan Friedman (*[The Little Schemer](https://felleisen.org/matthias/BTLS-index.html*):** emergenza della ricorsione per ripetizione e schemi comuni
-- **Abelson & Sussman (*[SICP](https://sarabander.github.io/sicp/*) e Felleisen et al. (*[HtDP](https://htdp.org/2026-5-28//Book/index.html)*):** scomposizione strutturale del dato, rappresentazioni
-- **Georges Cuisenaire:** l'aritmetica manipolativa dei "[numeri in colore](https://it.wikipedia.org/wiki/Regoli_Cuisenaire)"
-- **Giovanni Bosco:** *[L’aritmetica ed il sistema metrico portati a semplicità per le classi elementari col confronto dei prezzi e delle misure antiche d’Italia in metrico-decimale](https://www.salesian.online/wp-content/uploads/2022/01/Bosco_Aritmetica.pdf)*. 1881
+- Dan Friedman ([The Little Schemer](https://felleisen.org/matthias/BTLS-index.html): emergenza della ricorsione per ripetizione e schemi comuni
+- Abelson & Sussman ([SICP](https://sarabander.github.io/sicp/) e Felleisen et al. ([HtDP](https://htdp.org/2026-5-28//Book/index.html)): scomposizione strutturale del dato, rappresentazioni
+- Georges Cuisenaire: l'aritmetica manipolativa dei "[numeri in colore](https://it.wikipedia.org/wiki/Regoli_Cuisenaire)"
+- Giovanni Bosco: [L’aritmetica ed il sistema metrico portati a semplicità per le classi elementari col confronto dei prezzi e delle misure antiche d’Italia in metrico-decimale](https://www.salesian.online/wp-content/uploads/2022/01/Bosco_Aritmetica.pdf). 1881
 
 <!--
 La metodologia adottata si basa sul metodo dialogato e sull'apprendimento per imitazione guidata.
@@ -544,7 +544,7 @@ L'obiettivo pedagogico è mostrare che non servono decine di funzioni predefinit
 -->
 
 ---
-layout: itadinfo
+layout: itadinfo-two-cols
 ---
 
 ## Incontro 3: struttura ricorsiva di espressioni e predicati
@@ -568,6 +568,11 @@ layout: itadinfo
       [(atomo? (primo lst)) (lista-di-atomi? (resto lst))]
       [else #f])))
 ```
+
+::right::
+
+<br><br><br>
+
 #### [Pari](https://gionatamassibenincasa.github.io/process-visualizer/#BQEwpgZglgdlDOBjKACADgQwE5QPwCgUVgAbDAWwCMQNiYBKQo4xAexhCeeOAC8wsrXCgYoAxABdG3IsD4ChxNCPr1xEaTOAYSEnOTAwJqYJhzDgAWhEoATKoeN8p7HhQAGRi-MoAjF7M3eyA)
 ```scheme
 (define pari?
